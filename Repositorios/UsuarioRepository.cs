@@ -30,14 +30,14 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void UpdateUsuario(int idBuscado, Usuario modificado)
     {
-        var query = $"UPDATE Usuario SET nombre_de_usuario =(@nombreDeusuario) WHERE id_usuario =(@idUsuario);";
+        var query = $"UPDATE Usuario SET nombre_de_usuario =(@name) WHERE id_usuario =(@id);";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
 
             var command = new SQLiteCommand(query, connection);
-            command.Parameters.Add(new SQLiteParameter("@nombreDeUsuario", modificado.NombreDeUsuario));
-            command.Parameters.Add(new SQLiteParameter("@idUsuario", idBuscado));
+            command.Parameters.Add(new SQLiteParameter("@name", modificado.NombreDeUsuario));
+            command.Parameters.Add(new SQLiteParameter("@id", idBuscado));
 
             command.ExecuteNonQuery();
 

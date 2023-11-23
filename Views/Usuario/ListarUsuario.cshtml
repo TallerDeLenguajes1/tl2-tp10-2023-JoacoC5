@@ -1,0 +1,31 @@
+@model List<Usuario>
+
+<h1>Lista Usuario</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Id</td>
+                <td>@usuario.NombreDeUsuario</td>
+                <td>
+                    <a asp-controller="Usuario" asp-action="ModificarUsuario"
+                        asp-route-idUsuario="@usuario.Id">Modificar</a>
+                </td>
+                <td>
+                    <a asp-controller="usuario" asp-action="EliminarUsuario" asp-route-idUsuario="@usuario.Id"
+                        onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
