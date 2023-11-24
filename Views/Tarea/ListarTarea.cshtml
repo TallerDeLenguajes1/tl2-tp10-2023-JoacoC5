@@ -1,0 +1,40 @@
+@model List<Tarea>
+
+<h1>Lista Tareas</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Tarea</th>
+            <th>ID Tablero</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Descipcion</th>
+            <th>Color</th>
+            <th>Id Usuario Asignado</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarea in Model)
+        {
+            <tr>
+                <td>@tarea.Id</td>
+                <td>@tarea.IdTablero</td>
+                <td>@tarea.Nombre</td>
+                <td>@tarea.Estado</td>
+                <td>@tarea.Descripcion</td>
+                <td>@tarea.Color</td>
+                <td>@tarea.IdUsuarioAsignado</td>
+                <td>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idTarea="@tarea.Id">Modificar</a>
+                </td>
+                <td>
+                    <a asp-controller="Tarea" asp-action="EliminarTarea" asp-route-idTarea="@tarea.Id"
+                        onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
