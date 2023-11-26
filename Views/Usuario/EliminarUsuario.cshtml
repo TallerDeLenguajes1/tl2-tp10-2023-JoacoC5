@@ -1,0 +1,12 @@
+@model Usuario
+
+<form asp-controller="Usuario" asp-action="EliminarUsuario">
+    <div>
+        <input asp-for="@Model.Id" value="@Model.Id">
+    </div>
+    <div>
+        <input asp-for="@Model.NombreDeUsuario" value="@Model.NombreDeUsuario">
+    </div>
+    <button type="submit">Eliminar usuario</button>
+    <button><a asp-controller="Usuario" asp-action="ListarUsuarios">Cancelar</a></button>
+</form>

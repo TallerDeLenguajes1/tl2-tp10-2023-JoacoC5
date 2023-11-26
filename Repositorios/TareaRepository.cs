@@ -40,6 +40,7 @@ public class TareaRepository : ITareaRepository
             var command = new SQLiteCommand(query, connection);
             connection.Open();
 
+            command.Parameters.Add(new SQLiteParameter("@idTarea", idBuscado));
             command.Parameters.Add(new SQLiteParameter("@nombre", modificado.Nombre));
             command.Parameters.Add(new SQLiteParameter("@estado", modificado.Estado));
             command.Parameters.Add(new SQLiteParameter("@descripcion", modificado.Descripcion));
@@ -59,6 +60,7 @@ public class TareaRepository : ITareaRepository
         {
             var command = new SQLiteCommand(query, connection);
             connection.Open();
+            command.Parameters.Add(new SQLiteParameter("@id", idBuscado));
 
             using (SQLiteDataReader reader = command.ExecuteReader())
             {
@@ -116,6 +118,7 @@ public class TareaRepository : ITareaRepository
         {
             var command = new SQLiteCommand(query, connection);
             connection.Open();
+            command.Parameters.Add(new SQLiteParameter("@idTablero", idTablero));
 
             using (SQLiteDataReader reader = command.ExecuteReader())
             {

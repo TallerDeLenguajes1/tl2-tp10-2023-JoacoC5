@@ -1,0 +1,20 @@
+@model Tarea
+
+<form asp-controller="Tarea" asp-action="ModificarTarea">
+    <input asp-for="@Model.Id">
+    <input asp-for="@Model.IdTablero">
+    <div class="form-group">
+        <label asp-for="@Model.Nombre"></label>
+        <input asp-for="@Model.Nombre">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Descripcion"></label>
+        <input asp-for="@Model.Descripcion">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Color"></label>
+        <input asp-for="@Model.Color">
+    </div>
+
+    <button type="submit">Enviar</button>
+</form>

@@ -8,5 +8,6 @@ public interface ITableroRepository
     public void UpdateTablero(int idBuscado, Tablero modificado);
     public List<Tablero> GetAllTablero();
     public List<Tablero> GetTableroByUsuario(int idUBuscado);
+    public Tablero GetTableroById(int idBuscado);
     public void DeleteTablero(int idBuscado);
 }

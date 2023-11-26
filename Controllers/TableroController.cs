@@ -37,7 +37,7 @@ public class TableroController : Controller
     [HttpGet]
     public IActionResult ModificarTablero(int IdBuscado)
     {
-        return View(tableroRepository.GetTableroByUsuario(IdBuscado));
+        return View(tableroRepository.GetTableroById(IdBuscado));
     }
 
     [HttpPost]

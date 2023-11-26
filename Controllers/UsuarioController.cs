@@ -47,5 +47,16 @@ public class UsuarioController : Controller
         return RedirectToAction("ListarUsuario");
     }
 
-    //FALTA DELETE
+    [HttpGet]
+    public IActionResult EliminarUsuario(int idBuscado)
+    {
+        return View(usuarioRepository.GetUsuarioById(idBuscado));
+    }
+
+    [HttpPost]
+    public IActionResult EliminarUsuario(Usuario usuario)
+    {
+        usuarioRepository.DeleteUsuario(usuario.Id);
+        return RedirectToAction("ListarUsuario");
+    }
 }

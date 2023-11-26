@@ -1,7 +1,8 @@
 @model Usuario
 
 <form asp-controller="Usuario" asp-action="ModificarUsuario">
-    <input asp-for="@Model.Id">
+    <label asp-for="@Model.Id">Id</label>
+    <input asp-for="@Model.Id" value="@Model.Id">
     <div class="form-group">
         <label asp-for="@Model.NombreDeUsuario"></label>
         <input asp-for="@Model.NombreDeUsuario" class="form-control">
