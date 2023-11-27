@@ -13,7 +13,7 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void CreateUsuario(Usuario usuario)
     {
-        var query = $"INSERT INTO Usuario(nombre_de_usuario) VALUES(@name)";
+        var query = $"INSERT INTO Usuario(nombre_de_usuario, contrasenia, rol) VALUES(@name, @contrasenia, @rol)";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
@@ -21,6 +21,8 @@ public class UsuarioRepository : IUsuarioRepository
             var command = new SQLiteCommand(query, connection);
 
             command.Parameters.Add(new SQLiteParameter("@name", usuario.NombreDeUsuario));
+            command.Parameters.Add(new SQLiteParameter("@contrasenia", usuario.Contrasenia));
+            command.Parameters.Add(new SQLiteParameter("@rol", usuario.Rol));
 
             command.ExecuteNonQuery();
 
@@ -30,7 +32,7 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void UpdateUsuario(int idBuscado, Usuario modificado)
     {
-        var query = $"UPDATE Usuario SET nombre_de_usuario =(@name) WHERE id_usuario =(@id);";
+        var query = $"UPDATE Usuario SET nombre_de_usuario =(@name), contrasenia=(@contrasenia), rol=(@rol) WHERE id_usuario =(@id);";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
@@ -38,6 +40,8 @@ public class UsuarioRepository : IUsuarioRepository
             var command = new SQLiteCommand(query, connection);
             command.Parameters.Add(new SQLiteParameter("@name", modificado.NombreDeUsuario));
             command.Parameters.Add(new SQLiteParameter("@id", idBuscado));
+            command.Parameters.Add(new SQLiteParameter("@contrasenia", modificado.Contrasenia));
+            command.Parameters.Add(new SQLiteParameter("@rol", modificado.Rol));
 
             command.ExecuteNonQuery();
 
@@ -61,6 +65,8 @@ public class UsuarioRepository : IUsuarioRepository
                     Usuario aux = new Usuario();
                     aux.Id = Convert.ToInt32(reader["id_usuario"]);
                     aux.NombreDeUsuario = reader["nombre_de_usuario"].ToString();
+                    aux.Contrasenia = reader["contrasenia"].ToString();
+                    aux.Rol = (Rol)Convert.ToInt32(reader["rol"]);
 
                     usuarios.Add(aux);
                 }
@@ -88,6 +94,8 @@ public class UsuarioRepository : IUsuarioRepository
                 {
                     aux.Id = Convert.ToInt32(reader["id_usuario"]);
                     aux.NombreDeUsuario = reader["nombre_de_usuario"].ToString();
+                    aux.Contrasenia = reader["contrasenia"].ToString();
+                    aux.Rol = (Rol)Convert.ToInt32(reader["rol"]);
                 }
             }
             connection.Close();
