@@ -11,7 +11,6 @@
             <th>Estado</th>
             <th>Descipcion</th>
             <th>Color</th>
-            <th>Id Usuario Asignado</th>
             <th></th>
             <th></th>
         </tr>
@@ -26,7 +25,6 @@
                 <td>@tarea.Estado</td>
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
-                <td>@tarea.IdUsuarioAsignado</td>
                 <td>
                     <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idTarea="@tarea.Id">Modificar</a>
                 </td>
