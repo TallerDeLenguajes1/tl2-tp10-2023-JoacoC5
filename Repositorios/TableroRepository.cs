@@ -135,13 +135,13 @@ public class TableroRepository : ITableroRepository
     }
     public void DeleteTablero(int idBuscado)
     {
-        var query = @"DELETE * FROM Tablero WHERE id_tablero = @idBuscado;";
+        var query = @"DELETE FROM Tablero WHERE id_tablero = @idBuscado;";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
             var command = new SQLiteCommand(query, connection);
 
-            command.Parameters.Add(new SQLiteParameter("id_tablero", idBuscado));
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
             command.ExecuteNonQuery();
 
             connection.Close();

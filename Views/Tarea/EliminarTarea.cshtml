@@ -1,0 +1,31 @@
+@model Tarea
+
+<form asp-controller="Tarea" asp-action="EliminarTarea">
+    <div class="form-group">
+        <label asp-for="@Model.Id">Id</label>
+        <input asp-for="@Model.Id" value="@Model.Id">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.IdTablero">Id Tablero</label>
+        <input asp-for="@Model.IdTablero" value="@Model.IdTablero">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Nombre">Nombre</label>
+        <input asp-for="@Model.Nombre">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Estado">Estado</label>
+        <input asp-for="@Model.Estado" value="@Model.Estado">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Descripcion">Descripcion</label>
+        <input asp-for="@Model.Descripcion">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Color">Color</label>
+        <input asp-for="@Model.Color">
+    </div>
+
+    <button type="submit">Eliminar Tarea</button>
+    <button><a asp-controller="Tarea" asp-action="ListarTarea">Cancelar</a></button>
+</form>

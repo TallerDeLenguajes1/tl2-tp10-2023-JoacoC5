@@ -47,5 +47,16 @@ public class TableroController : Controller
         return RedirectToAction("ListarTablero");
     }
 
-    //FALTA DELETE
+    [HttpGet]
+    public IActionResult EliminarTablero(int idBuscado)
+    {
+        return View(tableroRepository.GetTableroById(idBuscado));
+    }
+
+    [HttpPost]
+    public IActionResult EliminarTablero(Tablero tablero)
+    {
+        tableroRepository.DeleteTablero(tablero.Id);
+        return RedirectToAction("ListarTablero");
+    }
 }

@@ -2,11 +2,13 @@
 
 <form asp-controller="Usuario" asp-action="EliminarUsuario">
     <div>
+        <label asp-for="@Model.Id">Id</label>
         <input asp-for="@Model.Id" value="@Model.Id">
     </div>
     <div>
+        <label asp-for="@Model.NombreDeUsuario">Nombre de usuario</label>
         <input asp-for="@Model.NombreDeUsuario" value="@Model.NombreDeUsuario">
     </div>
     <button type="submit">Eliminar usuario</button>
-    <button><a asp-controller="Usuario" asp-action="ListarUsuarios">Cancelar</a></button>
+    <button><a asp-controller="Usuario" asp-action="ListarUsuario">Cancelar</a></button>
 </form>

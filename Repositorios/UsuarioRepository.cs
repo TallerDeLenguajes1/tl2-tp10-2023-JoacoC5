@@ -97,7 +97,7 @@ public class UsuarioRepository : IUsuarioRepository
     }
     public void DeleteUsuario(int idBuscado)
     {
-        var query = @"DELETE * FROM usuario WHERE id_usuario = @idBuscado;";
+        var query = @"DELETE FROM usuario WHERE id_usuario = @idBuscado;";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();

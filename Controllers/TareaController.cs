@@ -48,5 +48,16 @@ public class TareaController : Controller
         return RedirectToAction("ListarTarea");
     }
 
-    //FALTA DELETE
+    [HttpGet]
+    public IActionResult EliminarTarea(int idBuscado)
+    {
+        return View(tareaRepository.GetTareaById(idBuscado));
+    }
+
+    [HttpPost]
+    public IActionResult EliminarTarea(Tablero tablero)
+    {
+        tareaRepository.DeleteTarea(tablero.Id);
+        return RedirectToAction("ListarTarea");
+    }
 }
