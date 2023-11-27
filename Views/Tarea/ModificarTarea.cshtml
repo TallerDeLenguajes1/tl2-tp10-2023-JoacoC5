@@ -1,11 +1,21 @@
 @model Tarea
 
 <form asp-controller="Tarea" asp-action="ModificarTarea">
-    <input asp-for="@Model.Id">
-    <input asp-for="@Model.IdTablero">
+    <div class="form-group">
+        <label asp-for="@Model.Id"></label>
+        <input asp-for="@Model.Id" value="@Model.Id">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.IdTablero"></label>
+        <input asp-for="@Model.IdTablero" value="@Model.IdTablero">
+    </div>
     <div class="form-group">
         <label asp-for="@Model.Nombre"></label>
         <input asp-for="@Model.Nombre">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Estado"></label>
+        <input asp-for="@Model.Estado" value="@Model.Estado">
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descripcion"></label>

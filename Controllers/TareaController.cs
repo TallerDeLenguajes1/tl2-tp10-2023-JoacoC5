@@ -32,7 +32,7 @@ public class TareaController : Controller
     public IActionResult ListarTarea(int idTablero)
     {
         idTablero = 1;
-        return View(tareaRepository.GetAllTareabyTablero(idTablero));
+        return View(tareaRepository.GetAllTareaByTablero(idTablero));
     }
 
     [HttpGet]
