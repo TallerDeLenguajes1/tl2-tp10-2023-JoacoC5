@@ -1,4 +1,4 @@
-@model List<Usuario>
+@model ViewUsuarioLista
 
 <h1>Lista Usuario</h1>
 
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var usuario in Model)
+        @foreach (var usuario in Model.ViewUsuarios)
         {
             <tr>
                 <td>@usuario.Id</td>
@@ -31,3 +31,7 @@
         }
     </tbody>
 </table>
+
+<footer>
+    <a asp-controller="Usuario" asp-action="CrearUsuario">Agregar usuario nuevo</a>
+</footer>

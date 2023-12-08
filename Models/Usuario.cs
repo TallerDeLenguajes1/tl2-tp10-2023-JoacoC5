@@ -7,7 +7,7 @@ namespace tl2_tp10_2023_JoacoC5.Models;
 
 public enum Rol
 {
-    Administrados,
+    Administrador,
     Operador
 }
 
@@ -23,4 +23,25 @@ public class Usuario
     public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
     public string Contrasenia { get => contrasenia; set => contrasenia = value; }
     public Rol Rol { get => rol; set => rol = value; }
+
+    public Usuario()
+    {
+
+    }
+
+    public Usuario(ViewUsuarioAgregar viewUsuario)
+    {
+        id = viewUsuario.Id;
+        nombreDeUsuario = viewUsuario.NombreDeUsuario;
+        rol = viewUsuario.Rol;
+        contrasenia = viewUsuario.Contrasenia;
+    }
+
+    public Usuario(ViewUsuarioUpdate viewUsuario)
+    {
+        id = viewUsuario.Id;
+        nombreDeUsuario = viewUsuario.NombreDeUsuario;
+        rol = viewUsuario.Rol;
+        contrasenia = viewUsuario.Contrasenia;
+    }
 }

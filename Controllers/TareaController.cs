@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using tl2_tp10_2023_JoacoC5.Models;
 using tl2_tp10_2023_JoacoC5.Repository;
@@ -13,6 +14,16 @@ public class TareaController : Controller
     {
         _logger = logger;
         tareaRepository = new TareaRepository();
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
     }
 
     [HttpGet]
@@ -59,5 +70,11 @@ public class TareaController : Controller
     {
         tareaRepository.DeleteTarea(tablero.Id);
         return RedirectToAction("ListarTarea");
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
