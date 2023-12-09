@@ -1,4 +1,4 @@
-@model Tablero
+@model ViewTableroAgregar
 
 <form asp-controller="Tablero" asp-action="CrearTablero">
     <div class="form-group">
@@ -12,3 +12,7 @@
 
     <button type="submit">Enviar</button>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

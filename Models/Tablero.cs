@@ -16,4 +16,25 @@ public class Tablero
     public int IdUsuarioPropietario { get => idUsuarioPropietario; set => idUsuarioPropietario = value; }
     public string Nombre { get => nombre; set => nombre = value; }
     public string Descripcion { get => descripcion; set => descripcion = value; }
+
+    public Tablero()
+    {
+
+    }
+
+    public Tablero(ViewTableroAgregar viewTablero)
+    {
+        id = viewTablero.Id;
+        idUsuarioPropietario = viewTablero.IdUsuarioPropietario;
+        nombre = viewTablero.Nombre;
+        descripcion = viewTablero.Descripcion;
+    }
+
+    public Tablero(ViewTableroUpdate viewTablero)
+    {
+        id = viewTablero.Id;
+        idUsuarioPropietario = viewTablero.IdUsuarioPropietario;
+        nombre = viewTablero.Nombre;
+        descripcion = viewTablero.Descripcion;
+    }
 }
