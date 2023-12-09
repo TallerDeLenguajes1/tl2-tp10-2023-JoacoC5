@@ -1,4 +1,4 @@
-@model Tarea
+@model ViewTareaAgregar
 
 <form asp-controller="Tarea" asp-action="CrearTarea">
     <div class="form-group">
@@ -24,3 +24,7 @@
 
     <button type="submit">Enviar</button>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

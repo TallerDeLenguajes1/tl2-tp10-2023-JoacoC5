@@ -1,4 +1,4 @@
-@model List<Tarea>
+@model ViewTareaLista
 
 <h1>Lista Tareas</h1>
 
@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var tarea in Model)
+        @foreach (var tarea in Model.ViewTareas)
         {
             <tr>
                 <td>@tarea.Id</td>

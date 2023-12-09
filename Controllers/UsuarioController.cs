@@ -83,7 +83,7 @@ public class UsuarioController : Controller
             }
             else
             {
-                if (HttpContext.Session.GetInt32("id") == idBuscado)
+                if (HttpContext.Session.GetInt32("Id") == idBuscado)
                 {
                     var update = new ViewUsuarioUpdate(usuarioRepository.GetUsuarioById(idBuscado));
                     return View("ModificarUsuarioOperador", update);

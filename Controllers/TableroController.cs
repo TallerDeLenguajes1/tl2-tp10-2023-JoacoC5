@@ -90,7 +90,7 @@ public class TableroController : Controller
                 }
                 else
                 {
-                    if (HttpContext.Session.GetInt32("id") == tablero.IdUsuarioPropietario)
+                    if (HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario)
                     {
                         ViewTableroUpdate viewTablero = new ViewTableroUpdate(tablero, _usuarioRepository.GetAllUsuario());
                         return View("ModificarTableroOperador", viewTablero);
@@ -121,7 +121,7 @@ public class TableroController : Controller
                 }
                 else
                 {
-                    if (HttpContext.Session.GetInt32("id") == tableroAux.IdUsuarioPropietario)
+                    if (HttpContext.Session.GetInt32("Id") == tableroAux.IdUsuarioPropietario)
                     {
                         Tablero tablero = new Tablero(viewtablero);
                         tableroRepository.UpdateTablero(idBuscado, tablero);

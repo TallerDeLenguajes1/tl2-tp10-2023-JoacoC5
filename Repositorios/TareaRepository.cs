@@ -180,6 +180,43 @@ public class TareaRepository : ITareaRepository
         }
     }
 
+    public List<Tarea> GetAllTareas()
+    {
+        var query = @"SELECT * FROM Tarea;";
+        List<Tarea> tareas = new List<Tarea>();
+
+        using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+        {
+            var command = new SQLiteCommand(query, connection);
+            connection.Open();
+
+            using (SQLiteDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Tarea aux = new Tarea();
+                    aux.Id = Convert.ToInt32(reader["id_tarea"]);
+                    aux.IdTablero = Convert.ToInt32(reader["id_tablero"]);
+                    aux.Nombre = reader["nombre"].ToString();
+                    aux.Estado = (EstadoTarea)Convert.ToInt32(reader["estado"]);
+                    aux.Descripcion = reader["descripcion"].ToString();
+                    aux.Color = reader["color"].ToString();
+                    if (reader["id_usuario_asignado"] == DBNull.Value)
+                    {
+                        aux.IdUsuarioAsignado = 0;
+                    }
+                    else
+                    {
+                        aux.IdUsuarioAsignado = Convert.ToInt32(reader["id_usuario_asignado"]);
+                    }
+                    tareas.Add(aux);
+                }
+            }
+            connection.Close();
+        }
+        return tareas;
+    }
+
     /* public int GetCantTareaByEstado(int estadoBuscado)
      {
          int cont = 0;
