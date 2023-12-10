@@ -24,17 +24,23 @@ public class LoginController : Controller
 
     public IActionResult Login(Usuario usuario)
     {
-
-        Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
-        (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
-        if (uLoggeado == null)
+        if (ModelState.IsValid)
         {
-            return RedirectToAction("Error");
+            Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
+            (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
+            if (uLoggeado == null)
+            {
+                return RedirectToAction("Error");
+            }
+            else
+            {
+                LoggearUsuario(uLoggeado);
+                return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
+            }
         }
         else
         {
-            LoggearUsuario(uLoggeado);
-            return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
+            return RedirectToAction("Index");
         }
     }
 
