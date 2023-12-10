@@ -79,6 +79,11 @@ public class TableroRepository : ITableroRepository
             connection.Close();
         }
 
+        if (tableros == null)
+        {
+            throw new Exception("Tableros no creados");
+        }
+
         return tableros;
     }
     public List<Tablero> GetTableroByUsuario(int idUBuscado)
@@ -104,6 +109,11 @@ public class TableroRepository : ITableroRepository
                 }
             }
             connection.Close();
+        }
+
+        if (tableros == null)
+        {
+            throw new Exception("Tableros no encontrados");
         }
         return tableros;
     }
@@ -133,9 +143,11 @@ public class TableroRepository : ITableroRepository
             connection.Close();
         }
 
+        if (tablero == null)
+        {
+            throw new Exception("Tablero no encontrado");
+        }
         return tablero;
-
-
     }
     public void DeleteTablero(int idBuscado)
     {

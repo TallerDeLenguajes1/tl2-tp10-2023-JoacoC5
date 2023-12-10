@@ -24,24 +24,42 @@ public class LoginController : Controller
 
     public IActionResult Login(Usuario usuario)
     {
-        if (ModelState.IsValid)
+        try
         {
-            Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
-            (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
-            if (uLoggeado == null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Error");
+                try
+                {
+                    Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
+                    (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
+                    if (uLoggeado == null)
+                    {
+                        return RedirectToAction("Error");
+                    }
+                    else
+                    {
+                        LoggearUsuario(uLoggeado);
+                        return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.ToString());
+                    return BadRequest();
+                }
+
             }
             else
             {
-                LoggearUsuario(uLoggeado);
-                return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
+                return RedirectToAction("Index");
             }
         }
-        else
+        catch (Exception ex)
         {
-            return RedirectToAction("Index");
+            _logger.LogError(ex.ToString());
+            return BadRequest();
         }
+
     }
 
     private void LoggearUsuario(Usuario uLog)

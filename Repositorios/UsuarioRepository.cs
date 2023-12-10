@@ -79,6 +79,11 @@ public class UsuarioRepository : IUsuarioRepository
             connection.Close();
         }
 
+        if (usuarios == null)
+        {
+            throw new Exception("Usuarios no creados");
+        }
+
         return usuarios;
 
     }
@@ -104,6 +109,11 @@ public class UsuarioRepository : IUsuarioRepository
                 }
             }
             connection.Close();
+        }
+
+        if (aux == null)
+        {
+            throw new Exception("Usuario no encontrado");
         }
 
         return aux;

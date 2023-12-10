@@ -83,6 +83,10 @@ public class TareaRepository : ITareaRepository
             connection.Close();
         }
 
+        if (aux == null)
+        {
+            throw new Exception("Tarea no encontrada");
+        }
         return aux;
     }
     public List<Tarea> GetAllTareaByUsuario(int idUsuario)
@@ -111,6 +115,10 @@ public class TareaRepository : ITareaRepository
                 }
             }
             connection.Close();
+        }
+        if (tareas == null)
+        {
+            throw new Exception("Tareas no encontradas");
         }
         return tareas;
     }
@@ -148,6 +156,10 @@ public class TareaRepository : ITareaRepository
                 }
             }
             connection.Close();
+        }
+        if (tareas == null)
+        {
+            throw new Exception("Tareas no encontradas");
         }
         return tareas;
     }
@@ -219,28 +231,11 @@ public class TareaRepository : ITareaRepository
             }
             connection.Close();
         }
+        if (tareas == null)
+        {
+            throw new Exception("Tareas no encontradas");
+        }
         return tareas;
     }
 
-    /* public int GetCantTareaByEstado(int estadoBuscado)
-     {
-         int cont = 0;
-
-         var query = @"GET * FROM Tarea WHERE estado = @estadoBuscado;";
-
-         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
-         {
-             var command = new SQLiteCommand(query, connection);
-             connection.Open();
-
-             using (SQLiteDataReader reader = command.ExecuteReader())
-             {
-                 while (reader.Read())
-                 {
-                     cont++;
-                 }
-             }
-         }
-         return cont;
-     }*/
 }
