@@ -3,15 +3,15 @@
 <form asp-controller="Tarea" asp-action="ModificarTarea">
     <div class="form-group">
         <label asp-for="@Model.Id">Id</label>
-        <input asp-for="@Model.Id" value="@Model.Id">
+        <input asp-for="@Model.Id" value="@Model.Id" required>
     </div>
     <div class="form-group">
         <label asp-for="@Model.IdTablero">Id Tablero</label>
-        <input asp-for="@Model.IdTablero" value="@Model.IdTablero">
+        <input asp-for="@Model.IdTablero" value="@Model.IdTablero" required>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre">
+        <input asp-for="@Model.Nombre" required maxlength="30">
     </div>
     <div class="form-group">
         <label asp-for="@Model.Estado">Estado</label>
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion">
+        <input asp-for="@Model.Descripcion" maxlength="100">
     </div>
     <div class="form-group">
         <label asp-for="@Model.Color">Color</label>

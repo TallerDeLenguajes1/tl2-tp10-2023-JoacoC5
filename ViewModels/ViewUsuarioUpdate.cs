@@ -3,15 +3,21 @@ using System.ComponentModel.DataAnnotations;
 
 public class ViewUsuarioUpdate
 {
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Id")]
     public int Id { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Nombre de usuario")]
+    [StringLength(25, ErrorMessage = "25 caracteres máximos")]
     public string NombreDeUsuario { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Rol")]
     public Rol Rol { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Contraseña")]
     public string Contrasenia { get; set; }
 
     public ViewUsuarioUpdate()

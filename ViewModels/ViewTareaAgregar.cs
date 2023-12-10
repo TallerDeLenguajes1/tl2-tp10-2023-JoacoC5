@@ -3,20 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 public class ViewTareaAgregar
 {
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Id")]
     public int Id { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Id tarea")]
     public int IdTablero { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Nombre tablero")]
+    [StringLength(30, ErrorMessage = "30 caracteres máximos")]
     public string Nombre { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
+    [StringLength(100, ErrorMessage = "100 caracteres máximos")]
     public string Descripcion { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
     public string Color { get; set; }
-    [Required(ErrorMessage = "Campo requerido")]
 
     public EstadoTarea Estado { get; set; }
 
