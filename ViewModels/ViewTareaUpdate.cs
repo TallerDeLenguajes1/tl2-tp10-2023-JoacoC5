@@ -22,17 +22,15 @@ public class ViewTareaUpdate
 
     public int? IdUsuarioAsignado { get; set; }
 
-    private List<Tablero> tableros;
-    public List<Tablero> Tableros { get => tableros; set => tableros = value; }
-    private List<Usuario> usuarios;
-    public List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
+    public List<Tablero> Tableros { get; set; }
+    public List<Usuario> Usuarios { get; set; }
 
     public ViewTareaUpdate()
     {
 
     }
 
-    public ViewTareaUpdate(Tarea tarea, List<Tablero> tableros, List<Usuario> usuarios)
+    public ViewTareaUpdate(Tarea tarea)
     {
         Id = tarea.Id;
         IdTablero = tarea.IdTablero;
@@ -41,9 +39,5 @@ public class ViewTareaUpdate
         Color = tarea.Color;
         Estado = tarea.Estado;
         IdUsuarioAsignado = tarea.IdUsuarioAsignado;
-
-        this.Tableros = tableros;
-        this.Usuarios = usuarios;
-
     }
 }

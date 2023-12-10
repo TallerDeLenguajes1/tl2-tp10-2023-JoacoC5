@@ -14,7 +14,7 @@ public class ViewTareaLista
         {
             var usuario = usuarios.FirstOrDefault(u => u.Id == ta.IdUsuarioAsignado);
             var tablero = tableros.FirstOrDefault(t => t.Id == ta.IdTablero);
-            viewTareas.Add(new ViewTarea(ta, usuario, tablero));
+            viewTareas.Add(new ViewTarea(ta));
         }
     }
 }

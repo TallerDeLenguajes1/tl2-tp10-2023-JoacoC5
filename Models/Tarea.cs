@@ -39,7 +39,7 @@ public class Tarea
 
     public Tarea(ViewTareaAgregar viewTarea)
     {
-        Id = 0;
+        Id = viewTarea.Id;
         IdTablero = viewTarea.IdTablero;
         Nombre = viewTarea.Nombre;
         Descripcion = viewTarea.Descripcion;
@@ -50,7 +50,7 @@ public class Tarea
 
     public Tarea(ViewTareaUpdate viewTarea)
     {
-        Id = 0;
+        Id = viewTarea.Id;
         IdTablero = viewTarea.IdTablero;
         Nombre = viewTarea.Nombre;
         Descripcion = viewTarea.Descripcion;

@@ -115,16 +115,49 @@ public class UsuarioController : Controller
 
     }
 
-    /*[HttpGet]
+    [HttpGet]
     public IActionResult EliminarUsuario(int idBuscado)
     {
-        return View(usuarioRepository.GetUsuarioById(idBuscado));
+        if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
+        {
+            return View(usuarioRepository.GetUsuarioById(idBuscado));
+        }
+        else
+        {
+            return View("Error");
+        }
+
+
     }
 
     [HttpPost]
     public IActionResult EliminarUsuario(Usuario usuario)
     {
-        usuarioRepository.DeleteUsuario(usuario.Id);
+        if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
+        {
+            usuarioRepository.DeleteUsuario(usuario.Id);
+            return RedirectToAction("ListarUsuario");
+        }
+        else
+        {
+            return View("Error");
+        }
+
+    }
+
+    /*public IActionResult EliminarUsuario(int idBuscado)
+    {
+        if (HttpContext.Session.GetString("Rol") == null)
+        {
+            return RedirectToRoute(new { controller = "Login", action = "Index" });
+        }
+        else
+        {
+            if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
+            {
+                usuarioRepository.DeleteUsuario(idBuscado);
+            }
+        }
         return RedirectToAction("ListarUsuario");
     }*/
 

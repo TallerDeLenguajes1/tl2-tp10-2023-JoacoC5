@@ -13,16 +13,19 @@ public class ViewTableroAgregar
 
     public string Descripcion { get; set; }
 
-    public List<Usuario> Usuarios { get; set; }
+    //public List<Usuario> Usuarios { get; set; }
 
     public ViewTableroAgregar()
     {
 
     }
 
-    public ViewTableroAgregar(List<Usuario> usuarios)
+    public ViewTableroAgregar(Tablero tablero)
     {
-        Usuarios = usuarios;
+        Id = tablero.Id;
+        IdUsuarioPropietario = tablero.IdUsuarioPropietario;
+        Nombre = tablero.Nombre;
+        Descripcion = tablero.Descripcion;
     }
 
 }

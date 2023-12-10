@@ -19,29 +19,19 @@ public class ViewTarea
     public EstadoTarea Estado { get => estado; set => estado = value; }
     public int? IdUsuarioAsignado { get => idUsuarioAsignado; set => idUsuarioAsignado = value; }
 
-    public ViewTarea(Tarea tarea, Usuario usuario, Tablero tablero)
+    public ViewTarea(Tarea tarea)
     {
         id = tarea.Id;
-        if (tablero == null)
-        {
-            idTablero = 0;
-        }
-        else
-        {
-            idTablero = tablero.Id;
-        }
+        idTablero = tarea.IdTablero;
         nombre = tarea.Nombre;
         descripcion = tarea.Descripcion;
         color = tarea.Color;
         estado = tarea.Estado;
-        if (usuario == null)
-        {
-            idUsuarioAsignado = 0;
-        }
-        else
-        {
-            idUsuarioAsignado = usuario.Id;
-        }
+        idUsuarioAsignado = tarea.IdUsuarioAsignado;
+    }
+
+    public ViewTarea()
+    {
 
     }
 }

@@ -14,8 +14,7 @@ public class TableroRepository : ITableroRepository
 
     public void CreateTablero(Tablero nuevo)
     {
-        var query = @"INSERT INTO Tablero(id_usuario_propietario, nombre, descripcion)
-         VALUES(@idUsuarioPropietario, @nombre, @descripcion);";
+        var query = $"INSERT INTO Tablero(id_usuario_propietario, nombre, descripcion) VALUES(@idUsuarioPropietario, @nombre, @descripcion);";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
@@ -33,7 +32,7 @@ public class TableroRepository : ITableroRepository
     }
     public void UpdateTablero(int idBuscado, Tablero modificado)
     {
-        var query = $"UPDATE Tablero SET nombre=(@name), descripcion=(@descripcion) WHERE id_tablero = (@idBuscado);"; //REVISAR MAS ADELANTE
+        var query = $"UPDATE Tablero SET id_usuario_propietario = @idUsuarioPropietario, nombre=(@nombre), descripcion=(@descripcion) WHERE id_tablero = (@idBuscado);"; //REVISAR MAS ADELANTE
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
@@ -41,7 +40,7 @@ public class TableroRepository : ITableroRepository
 
             command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
             command.Parameters.Add(new SQLiteParameter("@idUsuarioPropietario", modificado.IdUsuarioPropietario));
-            command.Parameters.Add(new SQLiteParameter("@name", modificado.Nombre));
+            command.Parameters.Add(new SQLiteParameter("@nombre", modificado.Nombre));
             command.Parameters.Add(new SQLiteParameter("@descripcion", modificado.Descripcion));
 
             command.ExecuteNonQuery();

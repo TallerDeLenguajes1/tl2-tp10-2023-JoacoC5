@@ -20,12 +20,11 @@ public class ViewTableroUpdate
 
     }
 
-    public ViewTableroUpdate(Tablero tablero, List<Usuario> usuarios)
+    public ViewTableroUpdate(Tablero tablero)
     {
         Id = tablero.Id;
         IdUsuarioPropietario = tablero.IdUsuarioPropietario;
         Nombre = tablero.Nombre;
         Descripcion = tablero.Descripcion;
-        Usuarios = usuarios;
     }
 }
