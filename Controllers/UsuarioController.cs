@@ -8,12 +8,12 @@ namespace tl2_tp10_2023_JoacoC5.Controllers;
 public class UsuarioController : Controller
 {
     private readonly ILogger<UsuarioController> _logger;
-    private IUsuarioRepository usuarioRepository;
+    private IUsuarioRepository _usuarioRepository;
 
-    public UsuarioController(ILogger<UsuarioController> logger)
+    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository)
     {
         _logger = logger;
-        usuarioRepository = new UsuarioRepository();
+        _usuarioRepository = usuarioRepository;
     }
 
     [HttpGet]
@@ -27,12 +27,12 @@ public class UsuarioController : Controller
         {
             if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
             {
-                ViewUsuarioLista usuarios = new ViewUsuarioLista(usuarioRepository.GetAllUsuario());
+                ViewUsuarioLista usuarios = new ViewUsuarioLista(_usuarioRepository.GetAllUsuario());
                 return View(usuarios);
             }
             else
             {
-                ViewUsuarioLista usuarios = new ViewUsuarioLista(usuarioRepository.GetAllUsuario().FindAll(u => u.Id == HttpContext.Session.GetInt32("Id")));
+                ViewUsuarioLista usuarios = new ViewUsuarioLista(_usuarioRepository.GetAllUsuario().FindAll(u => u.Id == HttpContext.Session.GetInt32("Id")));
 
                 return View(usuarios);
             }
@@ -58,7 +58,7 @@ public class UsuarioController : Controller
         if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
         {
             var nuevo = new Usuario(viewUsuario);
-            usuarioRepository.CreateUsuario(nuevo);
+            _usuarioRepository.CreateUsuario(nuevo);
             return RedirectToAction("ListarUsuario");
         }
         else
@@ -78,14 +78,14 @@ public class UsuarioController : Controller
         {
             if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
             {
-                var update = new ViewUsuarioUpdate(usuarioRepository.GetUsuarioById(idBuscado));
+                var update = new ViewUsuarioUpdate(_usuarioRepository.GetUsuarioById(idBuscado));
                 return View(update);
             }
             else
             {
                 if (HttpContext.Session.GetInt32("Id") == idBuscado)
                 {
-                    var update = new ViewUsuarioUpdate(usuarioRepository.GetUsuarioById(idBuscado));
+                    var update = new ViewUsuarioUpdate(_usuarioRepository.GetUsuarioById(idBuscado));
                     return View("ModificarUsuarioOperador", update);
                 }
                 else
@@ -108,7 +108,7 @@ public class UsuarioController : Controller
             if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
             {
                 var update = new Usuario(usuario);
-                usuarioRepository.UpdateUsuario(update.Id, update);
+                _usuarioRepository.UpdateUsuario(update.Id, update);
             }
             return RedirectToAction("ListarUsuario");
         }
@@ -120,7 +120,7 @@ public class UsuarioController : Controller
     {
         if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
         {
-            return View(usuarioRepository.GetUsuarioById(idBuscado));
+            return View(_usuarioRepository.GetUsuarioById(idBuscado));
         }
         else
         {
@@ -135,7 +135,7 @@ public class UsuarioController : Controller
     {
         if (HttpContext.Session != null && HttpContext.Session.GetString("Rol") == "Administrador")
         {
-            usuarioRepository.DeleteUsuario(usuario.Id);
+            _usuarioRepository.DeleteUsuario(usuario.Id);
             return RedirectToAction("ListarUsuario");
         }
         else

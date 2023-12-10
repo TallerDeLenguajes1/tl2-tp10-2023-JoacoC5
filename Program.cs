@@ -7,9 +7,7 @@ builder.Services.AddControllersWithViews();
 
 //var CadenaDeConexion = builder.Configuration.GetConnectionString("SqliteConexion")!.ToString();
 //builder.Services.AddSingleton<string>(CadenaDeConexion);
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<ITableroRepository, TableroRepository>();
-builder.Services.AddScoped<ITareaRepository, TareaRepository>();
+
 
 builder.Services.AddDistributedMemoryCache();
 
@@ -19,6 +17,13 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+var CadenaConexion = builder.Configuration.GetConnectionString("SqliteConexion")!.ToString();
+builder.Services.AddSingleton<string>(CadenaConexion);
+
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ITableroRepository, TableroRepository>();
+builder.Services.AddScoped<ITareaRepository, TareaRepository>();
 
 var app = builder.Build();
 
@@ -34,10 +39,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.UseSession();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

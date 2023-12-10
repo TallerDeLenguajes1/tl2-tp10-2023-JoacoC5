@@ -9,7 +9,12 @@ namespace tl2_tp10_2023_JoacoC5.Repository;
 
 public class UsuarioRepository : IUsuarioRepository
 {
-    private string cadenaConexion = "Data Source=DB/Kanban.db;Cache=Shared";
+    private string cadenaConexion;
+
+    public UsuarioRepository(string _cadenaConexion)
+    {
+        cadenaConexion = _cadenaConexion;
+    }
 
     public void CreateUsuario(Usuario usuario)
     {

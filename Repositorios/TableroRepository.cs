@@ -10,7 +10,12 @@ namespace tl2_tp10_2023_JoacoC5.Repository;
 
 public class TableroRepository : ITableroRepository
 {
-    private string cadenaConexion = "Data Source=DB/Kanban.db;Cache=Shared";
+    private string cadenaConexion;
+
+    public TableroRepository(string _cadenaConexion)
+    {
+        cadenaConexion = _cadenaConexion;
+    }
 
     public void CreateTablero(Tablero nuevo)
     {
