@@ -17,9 +17,9 @@ public class ViewTableroUpdate
     public string Nombre { get; set; }
 
     [StringLength(100, ErrorMessage = "100 caracteres máximos")]
+    [Display(Name = "Descripcion")]
     public string Descripcion { get; set; }
 
-    public List<Usuario> Usuarios { get; set; }
 
     public ViewTableroUpdate()
     {

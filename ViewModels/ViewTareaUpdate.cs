@@ -16,17 +16,18 @@ public class ViewTareaUpdate
     [StringLength(30, ErrorMessage = "30 caracteres máximos")]
     public string Nombre { get; set; }
 
+    [Display(Name = "Descripcion")]
     [StringLength(100, ErrorMessage = "100 caracteres máximos")]
     public string Descripcion { get; set; }
 
+    [Display(Name = "Color")]
     public string Color { get; set; }
 
+    [Display(Name = "Estado")]
     public EstadoTarea Estado { get; set; }
 
-    public int? IdUsuarioAsignado { get; set; }
-
-    public List<Tablero> Tableros { get; set; }
-    public List<Usuario> Usuarios { get; set; }
+    [Display(Name = "Id Usuario asignado")]
+    public int IdUsuarioAsignado { get; set; }
 
     public ViewTareaUpdate()
     {

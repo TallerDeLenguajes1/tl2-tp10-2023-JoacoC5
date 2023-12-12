@@ -1,17 +1,13 @@
-
-
 @model tl2_tp10_2023_JoacoC5.ViewModels.LoginViewModel
 
 <form asp-asp-controller="Login" asp-action="Login" method="post">
     <div class="form-group">
         <label asp-for="@Model.NombreDeUsuario">Nombre de Usuario</label>
         <input asp-for="@Model.NombreDeUsuario">
-        <span asp-validation-for="@Model.NombreDeUsuario"><</span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Contrasenia">Contraseña</label>
         <input type="password" asp-for="@Model.Contrasenia">
-        <span asp-validation-for="@Model.Contrasenia"><</span>
     </div>
 
     <button type="submit">Ingresar</button>

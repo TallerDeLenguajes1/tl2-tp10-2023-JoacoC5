@@ -1,6 +1,6 @@
 @model ViewTareaAgregar
 
-<form asp-controller="Tarea" asp-action="CrearTarea">
+<form asp-controller="Tarea" asp-action="CrearTarea" method="post">
     <div class="form-group">
         <label asp-for="@Model.IdTablero">Id Tablero</label>
         <input asp-for="@Model.IdTablero" class="form-control" required>

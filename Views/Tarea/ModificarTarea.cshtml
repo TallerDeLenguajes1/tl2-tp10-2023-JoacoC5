@@ -1,6 +1,6 @@
 @model ViewTareaUpdate
 
-<form asp-controller="Tarea" asp-action="ModificarTarea">
+<form asp-controller="Tarea" asp-action="ModificarTarea" method="post">
     <div class="form-group">
         <label asp-for="@Model.Id">Id</label>
         <input asp-for="@Model.Id" value="@Model.Id" required>
@@ -19,16 +19,12 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion" maxlength="100">
+        <input asp-for="@Model.Descripcion" value="@Model.Descripcion" maxlength="100">
     </div>
     <div class="form-group">
         <label asp-for="@Model.Color">Color</label>
-        <input asp-for="@Model.Color">
+        <input asp-for="@Model.Color" value="@Model.Color">
     </div>
 
     <button type="submit">Enviar</button>
 </form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

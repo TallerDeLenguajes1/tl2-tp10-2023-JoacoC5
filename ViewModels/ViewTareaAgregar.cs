@@ -23,7 +23,7 @@ public class ViewTareaAgregar
 
     public EstadoTarea Estado { get; set; }
 
-    public int? IdUsuarioAsignado { get; set; }
+    public int IdUsuarioAsignado { get; set; }
 
     private List<Tablero> tableros;
     public List<Tablero> Tableros { get => tableros; set => tableros = value; }

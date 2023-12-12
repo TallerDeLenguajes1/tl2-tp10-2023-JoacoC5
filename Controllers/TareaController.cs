@@ -126,6 +126,7 @@ public class TareaController : Controller
                     {
                         ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                         return View("ModificarTareaOperador", viewTarea);
+                        //No tiene efecto
                     }
                 }
 
@@ -161,11 +162,12 @@ public class TareaController : Controller
                     }
                     else
                     {
-                        if (HttpContext.Session.GetInt32("Id") == tareaAux.Id)
+                        if (HttpContext.Session.GetInt32("Id") == tareaAux.IdUsuarioAsignado)
                         {
                             Tarea tarea = new Tarea(viewTarea);
                             _tareaRepository.UpdateTarea(idBuscado, tarea);
                             return RedirectToAction("ListarTarea");
+                            //No tiene efecto
                         }
                     }
 

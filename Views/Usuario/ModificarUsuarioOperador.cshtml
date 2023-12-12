@@ -1,6 +1,6 @@
 @model ViewUsuarioUpdate
 
-<form asp-controller="Usuario" asp-action="ModificarUsuario">
+<form asp-controller="Usuario" asp-action="ModificarUsuario" method="post">
     <div>
         <label asp-for="@Model.Id">Id</label>
         <input asp-for="@Model.Id" value="@Model.Id">
@@ -16,7 +16,7 @@
     <div class="form-group">
         <label asp-for="@Model.Rol">Rol</label>
         <select asp-for="@Model.Rol">
-            <option value="Operador">Operador</option>
+            <option value="Operador" selected>Operador</option>
             <option value="Administrador">Administrador</option>
         </select>
     </div>

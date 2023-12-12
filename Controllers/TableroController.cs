@@ -125,6 +125,7 @@ public class TableroController : Controller
                     {
                         ViewTableroUpdate viewTablero = new ViewTableroUpdate(tablero);
                         return View("ModificarTableroOperador", viewTablero);
+                        //No tiene efecto
                     }
                 }
             }
@@ -168,6 +169,7 @@ public class TableroController : Controller
                             Tablero tablero = new Tablero(viewtablero);
                             _tableroRepository.UpdateTablero(idBuscado, tablero);
                             return RedirectToAction("ListarTablero");
+                            //No tiene efecto
                         }
                     }
                 }
