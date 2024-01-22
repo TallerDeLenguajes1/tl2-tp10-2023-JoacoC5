@@ -8,11 +8,11 @@ public class ViewTareaUpdate
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
-    [Display(Name = "Id tarea")]
+    [Display(Name = "Id tablero")]
     public int IdTablero { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
-    [Display(Name = "Nombre tablero")]
+    [Display(Name = "Nombre tarea")]
     [StringLength(30, ErrorMessage = "30 caracteres máximos")]
     public string Nombre { get; set; }
 

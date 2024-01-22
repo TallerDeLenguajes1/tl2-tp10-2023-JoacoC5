@@ -25,7 +25,7 @@ public class Tablero
     public Tablero(ViewTableroAgregar viewTablero)
     {
         id = viewTablero.Id;
-        idUsuarioPropietario = viewTablero.IdUsuarioPropietario;
+        idUsuarioPropietario = viewTablero.IdUsuarioAsignado;
         nombre = viewTablero.Nombre;
         descripcion = viewTablero.Descripcion;
     }

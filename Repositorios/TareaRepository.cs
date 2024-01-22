@@ -38,7 +38,7 @@ public class TareaRepository : ITareaRepository
     }
     public void UpdateTarea(int idBuscado, Tarea modificado)
     {
-        var query = @"UPDATE Tarea SET nombre=@nombre, estado=@estado, descripcion=@descripcion, color=@color
+        var query = @"UPDATE Tarea SET nombre=@nombre, estado=@estado, descripcion=@descripcion, color=@color, id_tablero=@idTablero, id_usuario_asignado=@idUsuario
         WHERE id_tarea = @idBuscado;";
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
@@ -51,6 +51,8 @@ public class TareaRepository : ITareaRepository
             command.Parameters.Add(new SQLiteParameter("@estado", modificado.Estado));
             command.Parameters.Add(new SQLiteParameter("@descripcion", modificado.Descripcion));
             command.Parameters.Add(new SQLiteParameter("@color", modificado.Color));
+            command.Parameters.Add(new SQLiteParameter("@idTablero", modificado.IdTablero));
+            command.Parameters.Add(new SQLiteParameter("@idUsuario", modificado.IdUsuarioAsignado));
 
             command.ExecuteNonQuery();
 

@@ -19,5 +19,10 @@
     </div>
 
     <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
+    <button><a asp-controller="Tablero" asp-action="ListarTablero">Cancelar</a></button>
 
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -7,14 +7,15 @@ public class ViewTableroAgregar
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
-    [Display(Name = "Id usuario propietario")]
-    public int IdUsuarioPropietario { get; set; }
+    [Display(Name = "Id usuario asignado")]
+    public int IdUsuarioAsignado { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
     [Display(Name = "Nombre tablero")]
     [StringLength(30, ErrorMessage = "30 caracateres máximos")]
     public string Nombre { get; set; }
 
+    [Display(Name = "Descripcion")]
     [StringLength(100, ErrorMessage = "100 caracateres máximos")]
     public string Descripcion { get; set; }
 
@@ -28,7 +29,7 @@ public class ViewTableroAgregar
     public ViewTableroAgregar(Tablero tablero)
     {
         Id = tablero.Id;
-        IdUsuarioPropietario = tablero.IdUsuarioPropietario;
+        IdUsuarioAsignado = tablero.IdUsuarioPropietario;
         Nombre = tablero.Nombre;
         Descripcion = tablero.Descripcion;
     }

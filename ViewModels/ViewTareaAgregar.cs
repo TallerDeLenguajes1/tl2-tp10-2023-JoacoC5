@@ -24,9 +24,11 @@ public class ViewTareaAgregar
     [Display(Name = "Color")]
     public string Color { get; set; }
 
+    [Display(Name = "Estado")]
     public EstadoTarea Estado { get; set; }
 
     [Required(ErrorMessage = "Campo requerido")]
+    [Display(Name = "Id usuario asignado")]
     public int IdUsuarioAsignado { get; set; }
 
     /*private List<Tablero> tableros;
