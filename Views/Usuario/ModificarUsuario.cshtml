@@ -10,7 +10,7 @@
         <input asp-for="@Model.NombreDeUsuario" required maxlength="25">
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Contrasenia">Contrasenia</label>
+        <label asp-for="@Model.Contrasenia">Contraseña</label>
         <input type="password" asp-for="@Model.Contrasenia" required>
     </div>
     <div class="form-group">
@@ -21,5 +21,5 @@
         </select>
     </div>
 
-    <button type="submit">Enviar</button>
+    <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
 </form>

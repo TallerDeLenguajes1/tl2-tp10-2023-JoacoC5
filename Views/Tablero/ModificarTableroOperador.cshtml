@@ -18,6 +18,6 @@
         <input asp-for="@Model.Descripcion" value="@Model.Descripcion" maxlength="100">
     </div>
 
-    <button type="submit">Enviar</button>
+    <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
 
 </form>

@@ -23,11 +23,10 @@
                 <td>@tablero.Descripcion</td>
                 <td>
                     <a asp-controller="Tablero" asp-action="ModificarTablero"
-                        asp-route-idtablero="@tablero.Id">Modificar</a>
+                        asp-route-idBuscado="@tablero.Id">Modificar</a>
                 </td>
                 <td>
-                    <a asp-controller="Tablero" asp-action="EliminarTablero" asp-route-idtablero="@tablero.Id"
-                        onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar</a>
+                    <a asp-controller="Tablero" asp-action="EliminarTablero" asp-route-idBuscado="@tablero.Id">Eliminar</a>
                 </td>
             </tr>
         }

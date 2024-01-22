@@ -58,7 +58,7 @@ public class TareaController : Controller
         {
             if (isAdmin())
             {
-                return View(new ViewTareaAgregar(new Tarea(), _tableroRepository.GetAllTablero(), _usuarioRepository.GetAllUsuario())); ;
+                return View(new ViewTareaAgregar());
             }
             else
             {

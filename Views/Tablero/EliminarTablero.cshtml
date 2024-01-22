@@ -12,15 +12,15 @@
 
     <div class="form-group">
         <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre" value="@Model.Id">
+        <input asp-for="@Model.Nombre" value="@Model.Nombre">
     </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion" value="@Model.Descripcion">
-    </div>
+    @*<div class="form-group">
+    <label asp-for="@Model.Descripcion">Descripcion</label>
+    <input asp-for="@Model.Descripcion" value="@Model.Descripcion">
+    </div>*@
 
-    <button type="submit">Eliminar tablero</button>
+    <button type="submit" onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar tablero</button>
     <button><a asp-controller="Tablero" asp-action="ListarTablero">Cancelar</a></button>
 
 </form>

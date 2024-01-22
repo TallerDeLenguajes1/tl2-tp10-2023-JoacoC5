@@ -15,8 +15,8 @@ public class TareaRepository : ITareaRepository
 
     public void CreateTarea(int idTablero, Tarea nuevo)
     {
-        var query = @"INSERT INTO Tarea(id_tablero,nombre,estado,descripcion,color)
-        VALUES(@id_tablero,@nombre,@estado,@descripcion,@color);";
+        var query = @"INSERT INTO Tarea(id_tablero,nombre,estado,descripcion,color,id_usuario_asignado)
+        VALUES(@id_tablero,@nombre,@estado,@descripcion,@color,@id_usuario_asignado);";
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
@@ -29,6 +29,7 @@ public class TareaRepository : ITareaRepository
             command.Parameters.Add(new SQLiteParameter("@estado", nuevo.Estado));
             command.Parameters.Add(new SQLiteParameter("@descripcion", nuevo.Descripcion));
             command.Parameters.Add(new SQLiteParameter("@color", nuevo.Color));
+            command.Parameters.Add(new SQLiteParameter("@id_usuario_asignado", nuevo.IdUsuarioAsignado));
 
             command.ExecuteNonQuery();
 

@@ -125,12 +125,12 @@ public class TableroController : Controller
                     {
                         ViewTableroUpdate viewTablero = new ViewTableroUpdate(tablero);
                         return View("ModificarTableroOperador", viewTablero);
-                        //No tiene efecto
                     }
                 }
             }
 
-            return RedirectToAction("ListarTablero");
+            return RedirectToAction("Error");
+            //Se puede cambiar
         }
         catch (Exception ex)
         {

@@ -26,11 +26,10 @@
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
                 <td>
-                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idTarea="@tarea.Id">Modificar</a>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id">Modificar</a>
                 </td>
                 <td>
-                    <a asp-controller="Tarea" asp-action="EliminarTarea" asp-route-idTarea="@tarea.Id"
-                        onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar</a>
+                    <a asp-controller="Tarea" asp-action="EliminarTarea" asp-route-idBuscado="@tarea.Id">Eliminar</a>
                 </td>
             </tr>
         }
