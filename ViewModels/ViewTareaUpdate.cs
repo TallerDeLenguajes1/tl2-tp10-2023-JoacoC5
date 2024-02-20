@@ -29,12 +29,15 @@ public class ViewTareaUpdate
     [Display(Name = "Id Usuario asignado")]
     public int IdUsuarioAsignado { get; set; }
 
+    /*public List<Usuario> Usuarios { get; set; }
+    public List<Tablero> Tableros { get; set; }*/
+
     public ViewTareaUpdate()
     {
 
     }
 
-    public ViewTareaUpdate(Tarea tarea)
+    public ViewTareaUpdate(Tarea tarea/*, List<Tablero> tableros, List<Usuario> usuarios*/)
     {
         Id = tarea.Id;
         IdTablero = tarea.IdTablero;
@@ -43,5 +46,8 @@ public class ViewTareaUpdate
         Color = tarea.Color;
         Estado = tarea.Estado;
         IdUsuarioAsignado = tarea.IdUsuarioAsignado;
+
+        //Usuarios = usuarios;
+        //Tableros = tableros;
     }
 }

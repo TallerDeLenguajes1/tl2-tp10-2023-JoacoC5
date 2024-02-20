@@ -58,4 +58,5 @@ public class Tarea
         Estado = viewTarea.Estado;
         IdUsuarioAsignado = viewTarea.IdUsuarioAsignado;
     }
+
 }

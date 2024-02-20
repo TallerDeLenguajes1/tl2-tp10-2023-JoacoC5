@@ -94,7 +94,7 @@ public class TableroRepository : ITableroRepository
         {
             var command = new SQLiteCommand(query, connection);
             connection.Open();
-            command.Parameters.Add(new SQLiteParameter("@idUsuarioPropietario", idUBuscado));
+            command.Parameters.Add(new SQLiteParameter("@idUBuscado", idUBuscado));
 
             using (SQLiteDataReader reader = command.ExecuteReader())
             {
@@ -163,4 +163,43 @@ public class TableroRepository : ITableroRepository
             connection.Close();
         }
     }
+
+    public List<Tablero> GetTableroByTarea(int idBuscado)
+    {
+        var query = @"SELECT DISTINCT Tablero.id_tablero as id, Tablero.id_usuario_propietario as idUsuarioPropietario,
+         Tablero.nombre as nombre, Tablero.descripcion as descripcion 
+         FROM Tablero INNER JOIN Tarea ON Tablero.id_tablero = Tarea.id_tablero 
+         WHERE Tarea.id_usuario_asignado = @idBuscado;";
+
+        List<Tablero> tableros = new List<Tablero>();
+        using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+        {
+            var command = new SQLiteCommand(query, connection);
+            connection.Open();
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
+
+            using (SQLiteDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Tablero aux = new Tablero();
+                    aux.Id = Convert.ToInt32(reader["id"]);
+                    aux.IdUsuarioPropietario = Convert.ToInt32(reader["idUsuarioPropietario"]);
+                    aux.Nombre = reader["nombre"].ToString();
+                    aux.Descripcion = reader["descripcion"].ToString();
+                    tableros.Add(aux);
+                }
+            }
+            connection.Close();
+        }
+
+        if (tableros == null)
+        {
+            throw new Exception("Tableros no encontrados");
+        }
+        return tableros;
+    }
+
+
 }
+

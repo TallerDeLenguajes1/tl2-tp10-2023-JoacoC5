@@ -37,8 +37,8 @@ public class TableroController : Controller
                 }
                 else
                 {
-                    ViewTableroLista viewTablero = new ViewTableroLista(_tableroRepository.GetAllTablero().FindAll(t => t.IdUsuarioPropietario == HttpContext.Session.GetInt32("Id")), _usuarioRepository.GetAllUsuario());
-                    return View(viewTablero);
+                    ViewTableroLista viewTablero = new ViewTableroLista(_tableroRepository.GetTableroByUsuario(HttpContext.Session.GetInt32("Id").GetValueOrDefault()), _tableroRepository.GetTableroByTarea(HttpContext.Session.GetInt32("Id").GetValueOrDefault()), _usuarioRepository.GetAllUsuario());
+                    return View("ListarTableroOperador", viewTablero);
                 }
             }
         }
@@ -252,4 +252,6 @@ public class TableroController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
 }

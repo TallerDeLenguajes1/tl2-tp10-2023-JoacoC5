@@ -33,7 +33,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.IdUsuarioAsignado">Id Usuario Asignado</label>
-        <input asp-for="@Model.IdUsuarioAsignado" class="form-control" required>
+        <input asp-for="@Model.IdUsuarioAsignado" value="@Model.IdUsuarioAsignado">
     </div>
 
     <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>

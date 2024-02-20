@@ -1,0 +1,64 @@
+@model ViewTareaLista
+
+<h1>Lista Tareas</h1>
+<h2>Tareas Asignadas</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID Tarea</th>
+            <th>ID Tablero</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Descipcion</th>
+            <th>Color</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarea in Model.ViewTareas)
+        {
+            <tr>
+                <td>@tarea.Id</td>
+                <td>@tarea.IdTablero</td>
+                <td>@tarea.Nombre</td>
+                <td>@tarea.Estado</td>
+                <td>@tarea.Descripcion</td>
+                <td>@tarea.Color</td>
+                <td>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id">Modificar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Tareas Sin Asignar</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID Tarea</th>
+            <th>ID Tablero</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Descipcion</th>
+            <th>Color</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarea in Model.ViewTareasNoAsignadas)
+        {
+            <tr>
+                <td>@tarea.Id</td>
+                <td>@tarea.IdTablero</td>
+                <td>@tarea.Nombre</td>
+                <td>@tarea.Estado</td>
+                <td>@tarea.Descripcion</td>
+                <td>@tarea.Color</td>
+                <td>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id">Asignar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

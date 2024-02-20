@@ -32,6 +32,8 @@ public class ViewTableroAgregar
         IdUsuarioAsignado = tablero.IdUsuarioPropietario;
         Nombre = tablero.Nombre;
         Descripcion = tablero.Descripcion;
+
+        //Usuarios = usuarios;
     }
 
 }

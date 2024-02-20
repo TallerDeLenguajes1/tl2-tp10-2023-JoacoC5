@@ -38,7 +38,9 @@ public class TareaRepository : ITareaRepository
     }
     public void UpdateTarea(int idBuscado, Tarea modificado)
     {
-        var query = @"UPDATE Tarea SET nombre=@nombre, estado=@estado, descripcion=@descripcion, color=@color, id_tablero=@idTablero, id_usuario_asignado=@idUsuario
+        var query = @"UPDATE Tarea SET nombre=@nombre, estado=@estado,
+         descripcion=@descripcion, color=@color, id_tablero=@idTablero, 
+         id_usuario_asignado=@idUsuario
         WHERE id_tarea = @idBuscado;";
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
@@ -80,7 +82,14 @@ public class TareaRepository : ITareaRepository
                     aux.Estado = (EstadoTarea)Convert.ToInt32(reader["estado"]);
                     aux.Descripcion = reader["descripcion"].ToString();
                     aux.Color = reader["color"].ToString();
-                    aux.IdUsuarioAsignado = Convert.ToInt32(reader["id_usuario_asignado"]);
+                    if (reader["id_usuario_asignado"] == DBNull.Value)
+                    {
+                        aux.IdUsuarioAsignado = 0;
+                    }
+                    else
+                    {
+                        aux.IdUsuarioAsignado = Convert.ToInt32(reader["id_usuario_asignado"]);
+                    }
                 }
             }
             connection.Close();
@@ -92,15 +101,16 @@ public class TareaRepository : ITareaRepository
         }
         return aux;
     }
-    public List<Tarea> GetAllTareaByUsuario(int idUsuario)
+    public List<Tarea> GetAllTareaByUsuario(int idBuscado)
     {
-        var query = @"SELECT * FROM Tarea WHERE id_usuario_asignado = @idUsuario;";
+        var query = @"SELECT * FROM Tarea WHERE id_usuario_asignado = @idBuscado;";
         List<Tarea> tareas = new List<Tarea>();
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             var command = new SQLiteCommand(query, connection);
             connection.Open();
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
 
             using (SQLiteDataReader reader = command.ExecuteReader())
             {
@@ -166,17 +176,17 @@ public class TareaRepository : ITareaRepository
         }
         return tareas;
     }
-    public void SetUsuario(int idUsuario, int idTarea)
+    public void SetUsuario(int idUsuario, int idBuscado)
     {
-        var query = @"UPDATE Tarea SET id_usuario_asignado = @idUsuario WHERE id_tarea = @idTarea;";
+        var query = @"UPDATE Tarea SET id_usuario_asignado=@idUsuario WHERE id_tarea = @idBuscado;";
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             var command = new SQLiteCommand(query, connection);
             connection.Open();
 
-            command.Parameters.Add(new SQLiteParameter("@id_usuario_asignado", idUsuario));
-            command.Parameters.Add(new SQLiteParameter("@id_tarea", idTarea));
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
+            command.Parameters.Add(new SQLiteParameter("@idUsuario", idUsuario));
 
             command.ExecuteNonQuery();
 

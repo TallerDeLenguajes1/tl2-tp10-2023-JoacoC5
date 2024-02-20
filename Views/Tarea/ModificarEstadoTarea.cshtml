@@ -1,13 +1,17 @@
-@model ViewTareaAgregar
+@model ViewTareaUpdate
 
-<form asp-controller="Tarea" asp-action="CrearTarea" method="post">
+<form asp-controller="Tarea" asp-action="ModificarTarea" method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Id">Id</label>
+        <input asp-for="@Model.Id" value="@Model.Id" readonly>
+    </div>
     <div class="form-group">
         <label asp-for="@Model.IdTablero">Id Tablero</label>
-        <input asp-for="@Model.IdTablero" required>
+        <input asp-for="@Model.IdTablero" value="@Model.IdTablero" readonly>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre" required maxlength="30">
+        <input asp-for="@Model.Nombre" maxlength="30" readonly>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Estado">Estado</label>
@@ -21,19 +25,22 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion" maxlength="100">
+        <input asp-for="@Model.Descripcion" value="@Model.Descripcion" maxlength="100" readonly>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Color">Color</label>
-        <input asp-for="@Model.Color">
+        <input asp-for="@Model.Color" value="@Model.Color" readonly>
     </div>
     <div class="form-group">
         <label asp-for="@Model.IdUsuarioAsignado">Id Usuario Asignado</label>
-        <input asp-for="@Model.IdUsuarioAsignado">
+        <select asp-for="@Model.IdUsuarioAsignado" disabled>
+
+            <option value="@Model.IdUsuarioAsignado">@Model.IdUsuarioAsignado</option>
+
+        </select>
     </div>
 
-
-    <button type="submit">Enviar</button>
+    <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
     <button><a asp-controller="Tarea" asp-action="ListarTarea">Cancelar</a></button>
 </form>
 

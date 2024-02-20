@@ -1,0 +1,52 @@
+@model ViewTableroLista
+<h1>Tableros</h1>
+<h2>Lista Tableros Propios</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Id Usuario Propietario</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tablero in Model.ViewTableros)
+        {
+            <tr>
+                <td>@tablero.Id</td>
+                <td>@tablero.IdUsuarioPropietario</td>
+                <td>@tablero.Nombre</td>
+                <td>@tablero.Descripcion</td>
+                <td>
+                    <a asp-controller="Tablero" asp-action="ModificarTablero"
+                        asp-route-idBuscado="@tablero.Id">Modificar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Lista Tableros Con Tareas Asignadas</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Id Usuario Propietario</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tablero in Model.ViewTablerosAjenos)
+        {
+            <tr>
+                <td>@tablero.Id</td>
+                <td>@tablero.IdUsuarioPropietario</td>
+                <td>@tablero.Nombre</td>
+                <td>@tablero.Descripcion</td>
+            </tr>
+        }
+    </tbody>
+</table>
