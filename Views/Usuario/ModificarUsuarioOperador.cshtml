@@ -3,7 +3,7 @@
 <form asp-controller="Usuario" asp-action="ModificarUsuario" method="post">
     <div>
         <label asp-for="@Model.Id">Id</label>
-        <input asp-for="@Model.Id" value="@Model.Id">
+        <input asp-for="@Model.Id" value="@Model.Id" readonly>
     </div>
     <div class="form-group">
         <label asp-for="@Model.NombreDeUsuario">Nombre de usuario</label>
@@ -13,13 +13,10 @@
         <label asp-for="@Model.Contrasenia">Contraseña</label>
         <input type="password" asp-for="@Model.Contrasenia" required>
     </div>
-    @*<div class="form-group">
-    <label asp-for="@Model.Rol">Rol</label>
-    <select asp-for="@Model.Rol">
-    <option value="Operador" selected>Operador</option>
-    <option value="Administrador">Administrador</option>
-    </select>
-    </div>*@
+    <div class="form-group">
+        <label asp-for="@Model.Rol">Rol</label>
+        <input asp-for="@Model.Rol" value="@Model.Rol" readonly>
+    </div>
 
     <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
     <button><a asp-controller="Usuario" asp-action="ListarUsuario">Cancelar</a></button>

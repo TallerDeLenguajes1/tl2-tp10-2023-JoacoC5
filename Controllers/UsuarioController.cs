@@ -114,6 +114,7 @@ public class UsuarioController : Controller
     {
         try
         {
+            var usuario = _usuarioRepository.GetUsuarioById(idBuscado);
             if (HttpContext.Session.GetString("Rol") == null)
             {
                 return RedirectToRoute(new { controller = "Login", action = "Index" });
@@ -122,15 +123,15 @@ public class UsuarioController : Controller
             {
                 if (isAdmin())
                 {
-                    var update = new ViewUsuarioUpdate(_usuarioRepository.GetUsuarioById(idBuscado));
-                    return View(update);
+                    ViewUsuarioUpdate viewUsuario = new ViewUsuarioUpdate(usuario);
+                    return View(viewUsuario);
                 }
                 else
                 {
-                    if (HttpContext.Session.GetInt32("Id") == idBuscado)
+                    if (HttpContext.Session.GetInt32("Id") == usuario.Id)
                     {
-                        var update = new ViewUsuarioUpdate(_usuarioRepository.GetUsuarioById(idBuscado));
-                        return View("ModificarUsuarioOperador", update);
+                        ViewUsuarioUpdate viewUsuario = new ViewUsuarioUpdate(usuario);
+                        return View("ModificarUsuarioOperador", viewUsuario);
                     }
                     else
                     {
@@ -148,12 +149,13 @@ public class UsuarioController : Controller
     }
 
     [HttpPost]
-    public IActionResult ModificarUsuario(ViewUsuarioUpdate usuario)
+    public IActionResult ModificarUsuario(int idBuscado, ViewUsuarioUpdate viewUsuario)
     {
         try
         {
             if (ModelState.IsValid)
             {
+                var usuarioAux = _usuarioRepository.GetUsuarioById(idBuscado);
                 if (HttpContext.Session.GetString("Rol") == null)
                 {
                     return RedirectToRoute(new { controller = "Login", action = "Index" });
@@ -162,8 +164,16 @@ public class UsuarioController : Controller
                 {
                     if (isAdmin())
                     {
-                        var update = new Usuario(usuario);
-                        _usuarioRepository.UpdateUsuario(update.Id, update);
+                        Usuario usuario = new Usuario(viewUsuario);
+                        _usuarioRepository.UpdateUsuario(idBuscado, usuario);
+                    }
+                    else
+                    {
+                        if (HttpContext.Session.GetInt32("Id") == usuarioAux.Id)
+                        {
+                            Usuario usuario = new Usuario(viewUsuario);
+                            _usuarioRepository.UpdateUsuario(idBuscado, usuario);
+                        }
                     }
                     return RedirectToAction("ListarUsuario");
                 }
