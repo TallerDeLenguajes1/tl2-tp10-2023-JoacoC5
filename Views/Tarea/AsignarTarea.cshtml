@@ -1,43 +1,47 @@
 @model ViewTareaUpdate
 
 <form asp-controller="Tarea" asp-action="ModificarTarea" method="post">
-    <div class="form-group">
-        <label asp-for="@Model.Id">Id</label>
-        <input asp-for="@Model.Id" value="@Model.Id" readonly>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.IdTablero">Id Tablero</label>
-        <input asp-for="@Model.IdTablero" value="@Model.IdTablero" readonly>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre" maxlength="30" readonly>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Estado">Estado</label>
-        <select asp-for="@Model.Estado" disabled>
-            <option value="Ideas">Ideas</option>
-            <option value="ToDo">Por hacer</option>
-            <option value="Doing">En proceso</option>
-            <option value="Review">Revisar</option>
-            <option value="Done">Finalizada</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion" value="@Model.Descripcion" maxlength="100" readonly>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Color">Color</label>
-        <input asp-for="@Model.Color" value="@Model.Color" readonly>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.IdUsuarioAsignado">Id Usuario Asignado</label>
-        <input asp-for="@Model.IdUsuarioAsignado" value="@Model.IdUsuarioAsignado" required>
-    </div>
+    <div class="text-center">
+        <div class="mb-3">
+            <label asp-for="@Model.Id" class="form-group">Id</label>
+            <input asp-for="@Model.Id" value="@Model.Id" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.IdTablero" class="form-group">Id Tablero</label>
+            <input asp-for="@Model.IdTablero" value="@Model.IdTablero" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Nombre" class="form-group">Nombre</label>
+            <input asp-for="@Model.Nombre" maxlength="30" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Estado" class="form-group">Estado</label>
+            <select asp-for="@Model.Estado" disabled class="form-select">
+                <option value="Ideas">Ideas</option>
+                <option value="ToDo">Por hacer</option>
+                <option value="Doing">En proceso</option>
+                <option value="Review">Revisar</option>
+                <option value="Done">Finalizada</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Descripcion" class="form-group">Descripcion</label>
+            <input asp-for="@Model.Descripcion" value="@Model.Descripcion" maxlength="100" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Color" class="form-group">Color</label>
+            <input asp-for="@Model.Color" value="@Model.Color" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.IdUsuarioAsignado" class="form-group">Id Usuario Asignado</label>
+            <input asp-for="@Model.IdUsuarioAsignado" value="@Model.IdUsuarioAsignado" required>
+        </div>
 
-    <button type="submit" asp-route-idBuscado="@Model.Id">Enviar</button>
-    <button><a asp-controller="Tarea" asp-action="ListarTarea">Cancelar</a></button>
+        <div>
+            <button type="submit" asp-route-idBuscado="@Model.Id" class="btn btn-success">Enviar</button>
+            <button><a asp-controller="Tarea" asp-action="ListarTarea" class="link-secondary">Cancelar</a></button>
+        </div>
+    </div>
 </form>
 
 @section Scripts {

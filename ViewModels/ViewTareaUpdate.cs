@@ -29,6 +29,8 @@ public class ViewTareaUpdate
     [Display(Name = "Id Usuario asignado")]
     public int IdUsuarioAsignado { get; set; }
 
+    //public ViewUsuarioLista Usuarios { get; set; }
+
     /*public List<Usuario> Usuarios { get; set; }
     public List<Tablero> Tableros { get; set; }*/
 

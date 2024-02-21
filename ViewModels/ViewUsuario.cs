@@ -11,13 +11,14 @@ public class ViewUsuario
     public int Id { get => id; set => id = value; }
     public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
     public Rol Rol { get => rol; set => rol = value; }
-    public string Contrasenia { get => contrasenia; set => contrasenia = value; }
+    //public string Contrasenia { get => contrasenia; set => contrasenia = value; }
 
-    public ViewUsuario(Usuario us)
+    public ViewUsuario(Usuario u)
     {
-        id = us.Id;
-        nombreDeUsuario = us.NombreDeUsuario;
-        rol = us.Rol;
-        contrasenia = us.Contrasenia;
+        id = u.Id;
+        nombreDeUsuario = u.NombreDeUsuario;
+        rol = u.Rol;
+        //contrasenia = us.Contrasenia;
     }
+
 }

@@ -117,28 +117,25 @@ public class TareaController : Controller
             }
             else
             {
+                ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                 if (isAdmin())
                 {
-                    ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                     return View(viewTarea);
                 }
                 else
                 {
                     if (HttpContext.Session.GetInt32("Id") == tarea.IdUsuarioAsignado && HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario)
                     {
-                        ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                         return View("ModificarTareaOperador", viewTarea);
                     }
                     else
                     {
                         if (HttpContext.Session.GetInt32("Id") == tarea.IdUsuarioAsignado)
                         {
-                            ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                             return View("ModificarEstadoTarea", viewTarea);
                         }
                         else
                         {
-                            ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
                             return View("AsignarTarea", viewTarea);
                         }
 

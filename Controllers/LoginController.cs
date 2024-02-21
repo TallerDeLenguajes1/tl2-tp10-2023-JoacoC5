@@ -34,8 +34,7 @@ public class LoginController : Controller
                     (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
                     if (uLoggeado == null)
                     {
-                        _logger.LogWarning("Intento de acceso invalido - Usuario: " + uLoggeado.NombreDeUsuario + " Clave ingresada: " + uLoggeado.Contrasenia);
-                        //Al no estar el usuario en la BD, no puede invocar sus atributos
+                        _logger.LogWarning("Intento de acceso invalido - Usuario o Contraseña incorrectos");
                         return RedirectToAction("Error");
                     }
                     else

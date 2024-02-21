@@ -2,9 +2,9 @@
 
 <h1>Lista Tableros</h1>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
+<table class="table table-bordered border-secondary" class="text-center">
+    <thead class="table-light">
+        <tr class="text-center">
             <th>ID</th>
             <th>Id Usuario Propietario</th>
             <th>Nombre</th>
@@ -16,17 +16,18 @@
     <tbody>
         @foreach (var tablero in Model.ViewTableros)
         {
-            <tr>
+            <tr class="text-center">
                 <td>@tablero.Id</td>
                 <td>@tablero.IdUsuarioPropietario</td>
                 <td>@tablero.Nombre</td>
                 <td>@tablero.Descripcion</td>
                 <td>
-                    <a asp-controller="Tablero" asp-action="ModificarTablero"
-                        asp-route-idBuscado="@tablero.Id">Modificar</a>
+                    <a asp-controller="Tablero" asp-action="ModificarTablero" asp-route-idBuscado="@tablero.Id"
+                        class="link-info">Modificar</a>
                 </td>
                 <td>
-                    <a asp-controller="Tablero" asp-action="EliminarTablero" asp-route-idBuscado="@tablero.Id">Eliminar</a>
+                    <a asp-controller="Tablero" asp-action="EliminarTablero" asp-route-idBuscado="@tablero.Id"
+                        class="link-danger">Eliminar</a>
                 </td>
             </tr>
         }

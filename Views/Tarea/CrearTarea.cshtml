@@ -1,40 +1,43 @@
 @model ViewTareaAgregar
 
 <form asp-controller="Tarea" asp-action="CrearTarea" method="post">
-    <div class="form-group">
-        <label asp-for="@Model.IdTablero">Id Tablero</label>
-        <input asp-for="@Model.IdTablero" required>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre" required maxlength="30">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Estado">Estado</label>
-        <select asp-for="@Model.Estado">
-            <option value="Ideas">Ideas</option>
-            <option value="ToDo">Por hacer</option>
-            <option value="Doing">En proceso</option>
-            <option value="Review">Revisar</option>
-            <option value="Done">Finalizada</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Descripcion">Descripcion</label>
-        <input asp-for="@Model.Descripcion" maxlength="100">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Color">Color</label>
-        <input asp-for="@Model.Color">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.IdUsuarioAsignado">Id Usuario Asignado</label>
-        <input asp-for="@Model.IdUsuarioAsignado">
-    </div>
+    <div class="text-center">
+        <div class="mb-3">
+            <label asp-for="@Model.IdTablero" class="form-group">Id Tablero</label>
+            <input asp-for="@Model.IdTablero" required>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Nombre" class="form-group">Nombre</label>
+            <input asp-for="@Model.Nombre" required maxlength="30">
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Estado" class="form-group">Estado</label>
+            <select asp-for="@Model.Estado" class="form-select">
+                <option value="Ideas">Ideas</option>
+                <option value="ToDo">Por hacer</option>
+                <option value="Doing">En proceso</option>
+                <option value="Review">Revisar</option>
+                <option value="Done">Finalizada</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Descripcion" class="form-group">Descripcion</label>
+            <input asp-for="@Model.Descripcion" maxlength="100">
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Color" class="form-group">Color</label>
+            <input asp-for="@Model.Color">
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.IdUsuarioAsignado" class="form-group">Id Usuario Asignado</label>
+            <input asp-for="@Model.IdUsuarioAsignado">
+        </div>
 
-
-    <button type="submit">Enviar</button>
-    <button><a asp-controller="Tarea" asp-action="ListarTarea">Cancelar</a></button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success">Enviar</button>
+            <button><a asp-controller="Tarea" asp-action="ListarTarea" class="link-secondary">Cancelar</a></button>}
+        </div>
+    </div>
 </form>
 
 @section Scripts {

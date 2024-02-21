@@ -2,9 +2,9 @@
 
 <h1>Lista Tareas</h1>
 <h2>Tareas Asignadas</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
+<table class="table table-bordered border-secondary">
+    <thead class="table-light">
+        <tr class="text-center">
             <th>ID Tarea</th>
             <th>ID Tablero</th>
             <th>Nombre</th>
@@ -17,7 +17,7 @@
     <tbody>
         @foreach (var tarea in Model.ViewTareas)
         {
-            <tr>
+            <tr class="text-center">
                 <td>@tarea.Id</td>
                 <td>@tarea.IdTablero</td>
                 <td>@tarea.Nombre</td>
@@ -25,7 +25,8 @@
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
                 <td>
-                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id">Modificar</a>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id"
+                        class="link-info">Modificar</a>
                 </td>
             </tr>
         }
@@ -35,7 +36,7 @@
 <h2>Tareas Sin Asignar</h2>
 <table class="table table-bordered">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>ID Tarea</th>
             <th>ID Tablero</th>
             <th>Nombre</th>
@@ -48,7 +49,7 @@
     <tbody>
         @foreach (var tarea in Model.ViewTareasNoAsignadas)
         {
-            <tr>
+            <tr class="text-center">
                 <td>@tarea.Id</td>
                 <td>@tarea.IdTablero</td>
                 <td>@tarea.Nombre</td>
@@ -56,7 +57,8 @@
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
                 <td>
-                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id">Asignar</a>
+                    <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id"
+                        class="link-warning">Asignar</a>
                 </td>
             </tr>
         }

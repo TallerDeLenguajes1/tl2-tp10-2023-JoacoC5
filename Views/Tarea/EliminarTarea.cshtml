@@ -1,31 +1,24 @@
 @model Tarea
 
 <form asp-controller="Tarea" asp-action="EliminarTarea">
-    <div class="form-group">
-        <label asp-for="@Model.Id">Id</label>
-        <input asp-for="@Model.Id" value="@Model.Id">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.IdTablero">Id Tablero</label>
-        <input asp-for="@Model.IdTablero" value="@Model.IdTablero">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre">
-    </div>
-    @*<div class="form-group">
-    <label asp-for="@Model.Estado">Estado</label>
-    <input asp-for="@Model.Estado" value="@Model.Estado">
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Descripcion">Descripcion</label>
-    <input asp-for="@Model.Descripcion">
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Color">Color</label>
-    <input asp-for="@Model.Color">
-    </div>*@
+    <div class="text-center">
+        <div class="mb-3">
+            <label asp-for="@Model.Id" class="form-group">Id</label>
+            <input asp-for="@Model.Id" value="@Model.Id" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.IdTablero" class="form-group">Id Tablero</label>
+            <input asp-for="@Model.IdTablero" value="@Model.IdTablero" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Nombre" class="form-group">Nombre</label>
+            <input asp-for="@Model.Nombre" readonly>
+        </div>
 
-    <button type="submit" onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar Tarea</button>
-    <button><a asp-controller="Tarea" asp-action="ListarTarea">Cancelar</a></button>
+        <div class="mb-3">
+            <button type="submit" onclick="return confirm('¿Quiere eliminar el elemento?')" class="link-danger">Eliminar
+                Tarea</button>
+            <button><a asp-controller="Tarea" asp-action="ListarTarea" class="link-secondary">Cancelar</a></button>
+        </div>
+    </div>
 </form>

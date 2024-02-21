@@ -1,26 +1,27 @@
 @model Tablero
 
 <form asp-controller="Tablero" asp-action="EliminarTablero">
-    <div class="form-group">
-        <label asp-for="@Model.Id">Id</label>
-        <input asp-for="@Model.Id" value="@Model.Id">
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.IdUsuarioPropietario">Id Usuario</label>
-        <input asp-for="@Model.IdUsuarioPropietario" value="@Model.IdUsuarioPropietario">
-    </div>
+    <div class="text-center">
 
-    <div class="form-group">
-        <label asp-for="@Model.Nombre">Nombre</label>
-        <input asp-for="@Model.Nombre" value="@Model.Nombre">
+        <div class="mb-3">
+            <label asp-for="@Model.Id" class="form-group">Id</label>
+            <input asp-for="@Model.Id" value="@Model.Id" readonly>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.IdUsuarioPropietario" class="form-group">Id Usuario</label>
+            <input asp-for="@Model.IdUsuarioPropietario" value="@Model.IdUsuarioPropietario" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="@Model.Nombre" class="form-group">Nombre</label>
+            <input asp-for="@Model.Nombre" value="@Model.Nombre" readonly>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" onclick="return confirm('¿Quiere eliminar el elemento?')" class="link-danger">Eliminar
+                tablero</button>
+            <button><a asp-controller="Tablero" asp-action="ListarTablero" class="link-secondary">Cancelar</a></button>
+        </div>
     </div>
-
-    @*<div class="form-group">
-    <label asp-for="@Model.Descripcion">Descripcion</label>
-    <input asp-for="@Model.Descripcion" value="@Model.Descripcion">
-    </div>*@
-
-    <button type="submit" onclick="return confirm('¿Quiere eliminar el elemento?')">Eliminar tablero</button>
-    <button><a asp-controller="Tablero" asp-action="ListarTablero">Cancelar</a></button>
 
 </form>

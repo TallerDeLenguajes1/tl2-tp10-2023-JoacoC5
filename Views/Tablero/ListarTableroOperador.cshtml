@@ -1,9 +1,9 @@
 @model ViewTableroLista
 <h1>Tableros</h1>
 <h2>Lista Tableros Propios</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
+<table class="table table-bordered border-secondary">
+    <thead class="table-light">
+        <tr class="text-center">
             <th>ID</th>
             <th>Id Usuario Propietario</th>
             <th>Nombre</th>
@@ -14,14 +14,14 @@
     <tbody>
         @foreach (var tablero in Model.ViewTableros)
         {
-            <tr>
+            <tr class="text-center">
                 <td>@tablero.Id</td>
                 <td>@tablero.IdUsuarioPropietario</td>
                 <td>@tablero.Nombre</td>
                 <td>@tablero.Descripcion</td>
                 <td>
-                    <a asp-controller="Tablero" asp-action="ModificarTablero"
-                        asp-route-idBuscado="@tablero.Id">Modificar</a>
+                    <a asp-controller="Tablero" asp-action="ModificarTablero" asp-route-idBuscado="@tablero.Id"
+                        class="link-info">Modificar</a>
                 </td>
             </tr>
         }
@@ -31,7 +31,7 @@
 <h2>Lista Tableros Con Tareas Asignadas</h2>
 <table class="table table-bordered">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>ID</th>
             <th>Id Usuario Propietario</th>
             <th>Nombre</th>
