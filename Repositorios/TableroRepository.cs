@@ -200,6 +200,21 @@ public class TableroRepository : ITableroRepository
         return tableros;
     }
 
+    public void AnularTableros(int idBuscado)
+    {
+        var query = @"DELETE FROM Tablero WHERE id_usuario_propietario = @idBuscado;";
+        using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+        {
+            connection.Open();
+            var command = new SQLiteCommand(query, connection);
+
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+    }
+
 
 }
 

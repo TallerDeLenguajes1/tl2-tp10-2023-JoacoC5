@@ -252,4 +252,38 @@ public class TareaRepository : ITareaRepository
         return tareas;
     }
 
+    public void AnularTareas(int idBuscado)
+    {
+        var query = @"DELETE FROM Tarea WHERE id_tablero = @idBuscado;";
+
+        using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+        {
+            connection.Open();
+
+            var command = new SQLiteCommand(query, connection);
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
+
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+    }
+
+    public void QuitarUsuario(int idBuscado)
+    {
+        var query = @"UPDATE Tarea SET id_usuario_asignado= 0 WHERE id_usuario_asignado=@idBuscado;";
+
+        using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+        {
+            var command = new SQLiteCommand(query, connection);
+            connection.Open();
+
+            command.Parameters.Add(new SQLiteParameter("@idBuscado", idBuscado));
+
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+    }
+
 }

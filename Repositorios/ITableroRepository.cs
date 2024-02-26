@@ -11,5 +11,6 @@ public interface ITableroRepository
     public Tablero GetTableroById(int idBuscado);
     public void DeleteTablero(int idBuscado);
     public List<Tablero> GetTableroByTarea(int idBuscado);
+    public void AnularTableros(int idUsuario);
 
 }

@@ -9,11 +9,15 @@ public class UsuarioController : Controller
 {
     private readonly ILogger<UsuarioController> _logger;
     private IUsuarioRepository _usuarioRepository;
+    private ITableroRepository _tableroRepository;
+    private ITareaRepository _tareaRepository;
 
-    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository)
+    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository, ITableroRepository tableroRepository, ITareaRepository tareaRepository)
     {
         _logger = logger;
         _usuarioRepository = usuarioRepository;
+        _tableroRepository = tableroRepository;
+        _tareaRepository = tareaRepository;
     }
 
     [HttpGet]
@@ -222,7 +226,18 @@ public class UsuarioController : Controller
         {
             if (isAdmin())
             {
+                var auxTablero = _tableroRepository.GetTableroByUsuario(usuario.Id);
+                var tareaAux = _tareaRepository.GetAllTareaByUsuario(usuario.Id);
                 _usuarioRepository.DeleteUsuario(usuario.Id);
+                _tableroRepository.AnularTableros(usuario.Id);
+                foreach (var t in auxTablero)
+                {
+                    _tareaRepository.AnularTareas(t.Id);
+                }
+                foreach (var t in tareaAux)
+                {
+                    _tareaRepository.QuitarUsuario(usuario.Id);
+                }
                 return RedirectToAction("ListarUsuario");
             }
             else

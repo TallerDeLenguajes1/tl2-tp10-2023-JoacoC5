@@ -12,5 +12,7 @@ public interface ITareaRepository
     //public void SetUsuario(int idusuario, int idTarea);
     public void DeleteTarea(int idBuscado);
     public List<Tarea> GetAllTareas();
-    //public int GetCantTareaByEstado(int estadoBuscado);
+    public void AnularTareas(int idBuscado);
+    public void QuitarUsuario(int idBuscado);
+
 }
