@@ -9,7 +9,7 @@ public class ViewTareaLista
     public List<ViewTarea> ViewTareasNoAsignadas { get => viewTareasNoAsignadas; set => viewTareasNoAsignadas = value; }
 
 
-    public ViewTareaLista(List<Tarea> tareas/*, List<Tablero> tableros*/, List<Usuario> usuarios)
+    public ViewTareaLista(List<Tarea> tareas, List<Tablero> tableros, List<Usuario> usuarios)
     {
         viewTareas = new List<ViewTarea>();
         foreach (var t in tareas)
@@ -18,14 +18,22 @@ public class ViewTareaLista
             {
                 if (t.IdUsuarioAsignado == u.Id)
                 {
-                    viewTareas.Add(new ViewTarea(t));
+                    Tablero auxTablero = tableros.Find(x => x.Id == t.IdTablero);
+                    var viewTarea = new ViewTarea(t);
+                    viewTarea.NombreUsuario = u.NombreDeUsuario;
+                    viewTarea.NombreTablero = auxTablero.Nombre;
+                    /*if (t.IdUsuarioAsignado == 0)
+                    {
+                        viewTarea.NombreUsuario = "";
+                    }*/
+                    viewTareas.Add(viewTarea);
                 }
             }
 
         }
     }
 
-    public ViewTareaLista(List<Tarea> tareas, List<Tarea> tareaNoAsignadas/*, List<Tablero> tableros*/, List<Usuario> usuarios)
+    public ViewTareaLista(List<Tarea> tareas, List<Tarea> tareaNoAsignadas, List<Tablero> tableros, List<Usuario> usuarios)
     {
         viewTareas = new List<ViewTarea>();
         foreach (var t in tareas)
@@ -34,7 +42,11 @@ public class ViewTareaLista
             {
                 if (t.IdUsuarioAsignado == u.Id)
                 {
-                    viewTareas.Add(new ViewTarea(t));
+                    Tablero auxTablero = tableros.Find(x => x.Id == t.IdTablero);
+                    var viewTarea = new ViewTarea(t);
+                    viewTarea.NombreUsuario = u.NombreDeUsuario;
+                    viewTarea.NombreTablero = auxTablero.Nombre;
+                    viewTareas.Add(viewTarea);
                 }
             }
 
@@ -47,7 +59,11 @@ public class ViewTareaLista
             {
                 if (t.IdUsuarioAsignado == u.Id)
                 {
-                    viewTareasNoAsignadas.Add(new ViewTarea(t));
+                    Tablero auxTablero = tableros.Find(x => x.Id == t.IdTablero);
+                    var viewTarea = new ViewTarea(t);
+                    viewTarea.NombreUsuario = u.NombreDeUsuario;
+                    viewTarea.NombreTablero = auxTablero.Nombre;
+                    viewTareasNoAsignadas.Add(viewTarea);
                 }
             }
         }

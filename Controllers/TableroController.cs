@@ -56,7 +56,7 @@ public class TableroController : Controller
         {
             if (isAdmin())
             {
-                return View(new ViewTableroAgregar());
+                return View(new ViewTableroAgregar(_usuarioRepository.GetAllUsuario()));
             }
             else
             {
@@ -117,6 +117,7 @@ public class TableroController : Controller
                 if (isAdmin())
                 {
                     ViewTableroUpdate viewTablero = new ViewTableroUpdate(_tableroRepository.GetTableroById(IdBuscado));
+                    viewTablero.Usuarios = _usuarioRepository.GetAllUsuario();
                     return View(viewTablero);
                 }
                 else
@@ -197,7 +198,8 @@ public class TableroController : Controller
         {
             if (isAdmin())
             {
-                return View(_tableroRepository.GetTableroById(idBuscado));
+                ViewTablero viewTablero = new ViewTablero(_tableroRepository.GetTableroById(idBuscado));
+                return View(viewTablero);
             }
             else
             {
@@ -212,7 +214,7 @@ public class TableroController : Controller
     }
 
     [HttpPost]
-    public IActionResult EliminarTablero(Tablero tablero)
+    public IActionResult EliminarTablero(ViewTablero tablero)
     {
         try
         {

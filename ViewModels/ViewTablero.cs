@@ -7,6 +7,7 @@ public class ViewTablero
     public int IdUsuarioPropietario { get; set; }
     public string Nombre { get; set; }
     public string Descripcion { get; set; }
+    public string? NombrePropietario { get; set; }
 
     public ViewTablero()
     {

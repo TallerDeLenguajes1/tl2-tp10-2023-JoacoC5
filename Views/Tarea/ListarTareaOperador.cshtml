@@ -5,12 +5,12 @@
 <table class="table table-bordered border-secondary">
     <thead class="table-light">
         <tr class="text-center">
-            <th>ID Tarea</th>
-            <th>ID Tablero</th>
             <th>Nombre</th>
+            <th>Tablero asignado</th>
             <th>Estado</th>
             <th>Descipcion</th>
             <th>Color</th>
+            <th>Usuario asignado</th>
             <th></th>
         </tr>
     </thead>
@@ -18,12 +18,12 @@
         @foreach (var tarea in Model.ViewTareas)
         {
             <tr class="text-center">
-                <td>@tarea.Id</td>
-                <td>@tarea.IdTablero</td>
                 <td>@tarea.Nombre</td>
+                <td>@tarea.NombreTablero</td>
                 <td>@tarea.Estado</td>
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
+                <td>@tarea.NombreUsuario</td>
                 <td>
                     <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id"
                         class="link-info">Modificar</a>
@@ -37,12 +37,12 @@
 <table class="table table-bordered">
     <thead>
         <tr class="text-center">
-            <th>ID Tarea</th>
-            <th>ID Tablero</th>
             <th>Nombre</th>
+            <th>Tablero asignado</th>
             <th>Estado</th>
             <th>Descipcion</th>
             <th>Color</th>
+            <th>Usuario asignado</th>
             <th></th>
         </tr>
     </thead>
@@ -50,12 +50,12 @@
         @foreach (var tarea in Model.ViewTareasNoAsignadas)
         {
             <tr class="text-center">
-                <td>@tarea.Id</td>
-                <td>@tarea.IdTablero</td>
                 <td>@tarea.Nombre</td>
+                <td>@tarea.NombreTablero</td>
                 <td>@tarea.Estado</td>
                 <td>@tarea.Descripcion</td>
                 <td>@tarea.Color</td>
+                <td>@tarea.NombreUsuario</td>
                 <td>
                     <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-idBuscado="@tarea.Id"
                         class="link-warning">Asignar</a>

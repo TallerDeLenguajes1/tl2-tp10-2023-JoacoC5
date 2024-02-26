@@ -35,8 +35,7 @@ public class UsuarioController : Controller
                 else
                 {
                     ViewUsuarioLista usuarios = new ViewUsuarioLista(_usuarioRepository.GetAllUsuario().FindAll(u => u.Id == HttpContext.Session.GetInt32("Id")));
-
-                    return View(usuarios);
+                    return View("ListarUsuarioOperador", usuarios);
                 }
             }
         }

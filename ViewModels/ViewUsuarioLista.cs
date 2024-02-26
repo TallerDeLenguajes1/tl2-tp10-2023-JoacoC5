@@ -12,8 +12,12 @@ public class ViewUsuarioLista
         viewUsuarios = new List<ViewUsuario>();
         foreach (var u in usuarios)
         {
-            var viewUsuario = new ViewUsuario(u);
-            viewUsuarios.Add(viewUsuario);
+            if (u.Id != 0 && u.Id != null)
+            {
+                var viewUsuario = new ViewUsuario(u);
+                viewUsuarios.Add(viewUsuario);
+            }
+
         }
     }
 }

@@ -18,6 +18,8 @@ public class ViewTarea
     public string Color { get => color; set => color = value; }
     public EstadoTarea Estado { get => estado; set => estado = value; }
     public int? IdUsuarioAsignado { get => idUsuarioAsignado; set => idUsuarioAsignado = value; }
+    public string? NombreUsuario { get; set; }
+    public string? NombreTablero { get; set; }
 
     public ViewTarea(Tarea tarea)
     {

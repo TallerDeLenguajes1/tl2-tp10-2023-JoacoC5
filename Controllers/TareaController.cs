@@ -34,12 +34,12 @@ public class TareaController : Controller
             {
                 if (isAdmin())
                 {
-                    ViewTareaLista tareas = new ViewTareaLista(_tareaRepository.GetAllTareas(), _usuarioRepository.GetAllUsuario());
+                    ViewTareaLista tareas = new ViewTareaLista(_tareaRepository.GetAllTareas(), _tableroRepository.GetAllTablero(), _usuarioRepository.GetAllUsuario());
                     return View(tareas);
                 }
                 else
                 {
-                    ViewTareaLista tareas = new ViewTareaLista(_tareaRepository.GetAllTareaByUsuario(HttpContext.Session.GetInt32("Id").GetValueOrDefault()), _tareaRepository.GetAllTareaByUsuario(0), _usuarioRepository.GetAllUsuario());
+                    ViewTareaLista tareas = new ViewTareaLista(_tareaRepository.GetAllTareaByUsuario(HttpContext.Session.GetInt32("Id").GetValueOrDefault()), _tareaRepository.GetAllTareaByTableros(HttpContext.Session.GetInt32("Id").GetValueOrDefault()), _tableroRepository.GetAllTablero(), _usuarioRepository.GetAllUsuario());
                     return View("ListarTareaOperador", tareas);
                 }
             }
@@ -58,7 +58,7 @@ public class TareaController : Controller
         {
             if (isAdmin())
             {
-                return View(new ViewTareaAgregar());
+                return View(new ViewTareaAgregar(_tableroRepository.GetAllTablero(), _usuarioRepository.GetAllUsuario()));
             }
             else
             {
@@ -118,6 +118,8 @@ public class TareaController : Controller
             else
             {
                 ViewTareaUpdate viewTarea = new ViewTareaUpdate(tarea);
+                viewTarea.Usuarios = _usuarioRepository.GetAllUsuario();
+                viewTarea.Tableros = _tableroRepository.GetAllTablero();
                 if (isAdmin())
                 {
                     return View(viewTarea);
@@ -136,7 +138,14 @@ public class TareaController : Controller
                         }
                         else
                         {
-                            return View("AsignarTarea", viewTarea);
+                            if (HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario)
+                            {
+                                return View("AsignarTarea", viewTarea);
+                            }
+                            else
+                            {
+                                return RedirectToAction("ListarTarea");
+                            }
                         }
 
                     }

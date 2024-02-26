@@ -135,9 +135,10 @@ public class TareaRepository : ITareaRepository
         }
         return tareas;
     }
-    public List<Tarea> GetAllTareaByTablero(int idTablero)
+    public List<Tarea> GetAllTareaByTableros(int idTablero)
     {
-        var query = @"SELECT * FROM Tarea WHERE id_tablero = @idTablero;";
+        var query = @"SELECT * FROM Tarea INNER JOIN Tablero ON Tablero.id_tablero=Tarea.id_tablero WHERE
+        Tablero.id_usuario_propietario=@idTablero AND Tarea.id_usuario_asignado = 0;";
         List<Tarea> tareas = new List<Tarea>();
 
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
@@ -176,7 +177,7 @@ public class TareaRepository : ITareaRepository
         }
         return tareas;
     }
-    public void SetUsuario(int idUsuario, int idBuscado)
+    /*public void SetUsuario(int idUsuario, int idBuscado)
     {
         var query = @"UPDATE Tarea SET id_usuario_asignado=@idUsuario WHERE id_tarea = @idBuscado;";
 
@@ -192,7 +193,7 @@ public class TareaRepository : ITareaRepository
 
             connection.Close();
         }
-    }
+    }*/
     public void DeleteTarea(int idBuscado)
     {
         var query = @"DELETE FROM Tarea WHERE id_tarea = @idBuscado;";

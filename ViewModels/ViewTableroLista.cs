@@ -19,6 +19,7 @@ public class ViewTableroLista
                 if (t.IdUsuarioPropietario == u.Id)
                 {
                     var viewTablero = new ViewTablero(t);
+                    viewTablero.NombrePropietario = u.NombreDeUsuario;
                     viewTableros.Add(viewTablero);
                 }
             }
@@ -35,6 +36,7 @@ public class ViewTableroLista
                 if (t.IdUsuarioPropietario == u.Id)
                 {
                     var viewTablero = new ViewTablero(t);
+                    viewTablero.NombrePropietario = u.NombreDeUsuario;
                     viewTableros.Add(viewTablero);
                 }
             }
@@ -47,6 +49,7 @@ public class ViewTableroLista
                 if (t.IdUsuarioPropietario == u.Id)
                 {
                     var viewTablero = new ViewTablero(t);
+                    viewTablero.NombrePropietario = u.NombreDeUsuario;
                     viewTablerosAjenos.Add(viewTablero);
                 }
             }

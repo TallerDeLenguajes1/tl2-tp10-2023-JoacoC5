@@ -18,22 +18,26 @@ public class ViewTableroAgregar
     [Display(Name = "Descripcion")]
     [StringLength(100, ErrorMessage = "100 caracateres máximos")]
     public string Descripcion { get; set; }
-
-    //public List<Usuario> Usuarios { get; set; }
+    public List<Usuario>? Usuarios { get; set; }
 
     public ViewTableroAgregar()
     {
 
     }
 
-    public ViewTableroAgregar(Tablero tablero)
+    public ViewTableroAgregar(List<Usuario> usuarios)
+    {
+        Usuarios = usuarios;
+    }
+
+    public ViewTableroAgregar(Tablero tablero, List<Usuario> usuarios)
     {
         Id = tablero.Id;
         IdUsuarioAsignado = tablero.IdUsuarioPropietario;
         Nombre = tablero.Nombre;
         Descripcion = tablero.Descripcion;
 
-        //Usuarios = usuarios;
+        Usuarios = usuarios;
     }
 
 }

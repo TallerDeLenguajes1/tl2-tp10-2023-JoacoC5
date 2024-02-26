@@ -1,0 +1,26 @@
+@model ViewUsuarioLista
+
+<h1>Lista Usuario</h1>
+
+<table class="table table-bordered border-secondary">
+    <thead class="table-light">
+        <tr class="text-center">
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model.ViewUsuarios)
+        {
+            <tr class="text-center">
+                <td>@usuario.NombreDeUsuario</td>
+                <td>@usuario.Rol</td>
+                <td>
+                    <a asp-controller="Usuario" asp-action="ModificarUsuario" asp-route-idBuscado="@usuario.Id"
+                        class="link-info">Modificar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

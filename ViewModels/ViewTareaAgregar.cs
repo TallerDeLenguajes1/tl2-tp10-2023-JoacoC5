@@ -30,18 +30,21 @@ public class ViewTareaAgregar
     [Required(ErrorMessage = "Campo requerido")]
     [Display(Name = "Id usuario asignado")]
     public int IdUsuarioAsignado { get; set; }
-
-    /*private List<Tablero> tableros;
-    public List<Tablero> Tableros { get => tableros; set => tableros = value; }
-    private List<Usuario> usuarios;
-    public List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }*/
+    public List<Tablero>? Tableros { get; set; }
+    public List<Usuario>? Usuarios { get; set; }
 
     public ViewTareaAgregar()
     {
 
     }
 
-    public ViewTareaAgregar(Tarea tarea/*,List<Tablero> tableros, List<Usuario> usuarios*/)
+    public ViewTareaAgregar(List<Tablero> tableros, List<Usuario> usuarios)
+    {
+        Tableros = tableros;
+        Usuarios = usuarios;
+    }
+
+    public ViewTareaAgregar(Tarea tarea, List<Tablero> tableros, List<Usuario> usuarios)
     {
         Id = tarea.Id;
         IdTablero = tarea.IdTablero;
@@ -51,8 +54,8 @@ public class ViewTareaAgregar
         Estado = tarea.Estado;
         IdUsuarioAsignado = tarea.IdUsuarioAsignado;
 
-        //this.Tableros = tableros;
-        //this.Usuarios = usuarios;
+        Tableros = tableros;
+        Usuarios = usuarios;
 
     }
 }

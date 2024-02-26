@@ -5,8 +5,7 @@
 <table class="table table-bordered border-secondary" class="text-center">
     <thead class="table-light">
         <tr class="text-center">
-            <th>ID</th>
-            <th>Id Usuario Propietario</th>
+            <th>Usuario Propietario</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th></th>
@@ -17,8 +16,7 @@
         @foreach (var tablero in Model.ViewTableros)
         {
             <tr class="text-center">
-                <td>@tablero.Id</td>
-                <td>@tablero.IdUsuarioPropietario</td>
+                <td>@tablero.NombrePropietario</td>
                 <td>@tablero.Nombre</td>
                 <td>@tablero.Descripcion</td>
                 <td>

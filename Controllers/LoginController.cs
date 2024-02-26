@@ -28,28 +28,19 @@ public class LoginController : Controller
         {
             if (ModelState.IsValid)
             {
-                try
+                Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
+                (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
+                if (uLoggeado == null)
                 {
-                    Usuario uLoggeado = _usuarioRepository.GetAllUsuario().FirstOrDefault
-                    (u => u.NombreDeUsuario == usuario.NombreDeUsuario && u.Contrasenia == usuario.Contrasenia);
-                    if (uLoggeado == null)
-                    {
-                        _logger.LogWarning("Intento de acceso invalido - Usuario o Contraseña incorrectos");
-                        return RedirectToAction("Error");
-                    }
-                    else
-                    {
-                        LoggearUsuario(uLoggeado);
-                        _logger.LogInformation("El usuario " + uLoggeado.NombreDeUsuario + " ingreso correctamente");
-                        return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
-                    }
+                    _logger.LogWarning("Intento de acceso invalido - Usuario o Contraseña incorrectos");
+                    return RedirectToAction("Index");
                 }
-                catch (Exception ex)
+                else
                 {
-                    _logger.LogError(ex.ToString());
-                    return BadRequest();
+                    LoggearUsuario(uLoggeado);
+                    _logger.LogInformation("El usuario " + uLoggeado.NombreDeUsuario + " ingreso correctamente");
+                    return RedirectToRoute(new { controller = "Usuario", action = "ListarUsuario" });
                 }
-
             }
             else
             {
@@ -58,8 +49,8 @@ public class LoginController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex.ToString());
-            return BadRequest();
+            _logger.LogError("Error al intentar ingresar: " + ex);
+            return RedirectToAction("Index");
         }
 
     }
